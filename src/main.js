@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import App from './App.vue'
-import Home from '@/pages/home/index.vue'
-import About from '@/pages/about/index.vue'
-import Product from '@/pages/product/index.vue'
+import HomeIndex from '@/pages/home/index.vue'
+import AboutIndex from '@/pages/about/index.vue'
+import ProductIndex from '@/pages/product/index.vue'
+import LoginPage from '@/pages/login'
 Vue.use(VueRouter)
 
 Vue.config.productionTip = false
@@ -12,7 +13,7 @@ const routes = [
   {
     path: '/',
     name: 'index',
-    component: Home,
+    component: HomeIndex,
     meta: {
       layout: 'HomeLayout',
     },
@@ -20,7 +21,7 @@ const routes = [
   {
     path: '/about',
     name: 'about',
-    component: About,
+    component: AboutIndex,
     meta: {
       layout: 'AboutLayout',
     },
@@ -28,9 +29,17 @@ const routes = [
   {
     path: '/product',
     name: 'product',
-    component: Product,
+    component: ProductIndex,
     meta: {
       layout: 'ProductLayout',
+    },
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: LoginPage,
+    meta: {
+      layout: 'LoginLayout',
     },
   },
 ]

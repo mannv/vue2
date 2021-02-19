@@ -2,7 +2,7 @@
   <div>
     <Header bg-class="bg-success" />
     <main role="main">
-      <div className="container">
+      <div class="container">
         <slot />
       </div>
     </main>
