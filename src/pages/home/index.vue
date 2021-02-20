@@ -30,6 +30,7 @@ export default {
     logout() {
       this.$store.dispatch('auth/logout')
       this.$auth.logout()
+      this.$router.push({ name: 'login' })
     },
     async category() {
       // let categories = await this.axios.get('/category/v1/list')
