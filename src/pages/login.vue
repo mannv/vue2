@@ -28,7 +28,11 @@
     <div class="checkbox mb-3">
       <label> <input type="checkbox" value="remember-me" /> Remember me </label>
     </div>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">
+    <button
+      class="btn btn-lg btn-primary btn-block"
+      type="button"
+      @click="login"
+    >
       Sign in
     </button>
     <p class="mt-5 mb-3 text-muted">
@@ -39,7 +43,24 @@
 
 <script>
 export default {
-  name: 'login',
+  data() {
+    return {
+      account: '0904488452',
+      token: '165d6b39ae5c7324011512ce06edba52',
+    }
+  },
+  methods: {
+    login: function() {
+      this.$auth
+        .login({ account: this.account, token: this.token })
+        .then(res => {
+          console.log('res', res)
+          console.log('ath', this.$auth.isAuthenticated())
+          console.log('getToken', this.$auth.getToken())
+          // this.$router.push({ name: 'index' })
+        })
+    },
+  },
 }
 </script>
 

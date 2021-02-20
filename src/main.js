@@ -5,8 +5,23 @@ import HomeIndex from '@/pages/home/index.vue'
 import AboutIndex from '@/pages/about/index.vue'
 import ProductIndex from '@/pages/product/index.vue'
 import LoginPage from '@/pages/login'
-Vue.use(VueRouter)
 
+import VueAxios from 'vue-axios'
+import VueAuthenticate from 'vue-authenticate'
+import axios from 'axios'
+axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*'
+Vue.use(VueAxios, axios)
+Vue.use(VueAuthenticate, {
+  baseUrl: '/', // Your API domain
+  loginUrl: '/auth/v1/login',
+  tokenPath: 'data.access_token',
+  tokenName: 'access_token',
+  storageNamespace: 'vue2-demo-authenticate',
+
+  providers: {},
+})
+
+Vue.use(VueRouter)
 Vue.config.productionTip = false
 
 const routes = [
