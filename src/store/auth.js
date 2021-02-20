@@ -17,7 +17,9 @@ const auth = {
   },
   mutations: {
     SET_AUTH_DATA(state, data) {
-      localStorage.setItem('auth-info', JSON.stringify(data))
+      const str = JSON.stringify(data)
+      localStorage.setItem('auth-info', str)
+      Vue.prototype.$auth.setItem('auth-info', str)
       state.data = data
     },
   },

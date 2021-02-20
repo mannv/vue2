@@ -15,6 +15,28 @@ function initVueAuthenticate() {
 
     providers: {},
   })
+
+  Object.defineProperties(Vue.prototype.$auth, {
+    demo: {
+      value: function(msg) {
+        console.log('msg: ', msg)
+        this.storage.setItem('demo-msg', msg)
+      },
+    },
+    setItem: {
+      value: function(key, value) {
+        this.storage.setItem(key, value)
+      },
+    },
+    user: {
+      value: function() {
+        if (!this.isAuthenticated()) {
+          return null
+        }
+        return JSON.parse(this.storage.getItem('auth-info'))
+      },
+    },
+  })
 }
 
 export { initVueAuthenticate }
