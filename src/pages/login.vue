@@ -55,10 +55,12 @@ export default {
         .login({ account: this.account, token: this.token })
         .then(res => {
           console.log('res', res)
-          console.log('ath', this.$auth.isAuthenticated())
-          console.log('getToken', this.$auth.getToken())
-          // this.$router.push({ name: 'index' })
+          this.loadProfile()
         })
+    },
+    async loadProfile() {
+      await this.$store.dispatch('auth/loadProfile')
+      return this.$router.push({ name: 'index' })
     },
   },
 }

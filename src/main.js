@@ -1,70 +1,14 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
 import App from './App.vue'
-import HomeIndex from '@/pages/home/index.vue'
-import AboutIndex from '@/pages/about/index.vue'
-import ProductIndex from '@/pages/product/index.vue'
-import LoginPage from '@/pages/login'
+import ConfigRouter from '@/config/router'
+import ConfigStore from '@/config/store'
+import { initVueAuthenticate } from '@/config/vue-authenticate'
 
-import VueAxios from 'vue-axios'
-import VueAuthenticate from 'vue-authenticate'
-import axios from 'axios'
-axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*'
-Vue.use(VueAxios, axios)
-Vue.use(VueAuthenticate, {
-  baseUrl: '/', // Your API domain
-  loginUrl: '/auth/v1/login',
-  tokenPath: 'data.access_token',
-  tokenName: 'access_token',
-  storageNamespace: 'vue2-demo-authenticate',
-
-  providers: {},
-})
-
-Vue.use(VueRouter)
 Vue.config.productionTip = false
-
-const routes = [
-  {
-    path: '/',
-    name: 'index',
-    component: HomeIndex,
-    meta: {
-      layout: 'HomeLayout',
-    },
-  },
-  {
-    path: '/about',
-    name: 'about',
-    component: AboutIndex,
-    meta: {
-      layout: 'AboutLayout',
-    },
-  },
-  {
-    path: '/product',
-    name: 'product',
-    component: ProductIndex,
-    meta: {
-      layout: 'ProductLayout',
-    },
-  },
-  {
-    path: '/login',
-    name: 'login',
-    component: LoginPage,
-    meta: {
-      layout: 'LoginLayout',
-    },
-  },
-]
-
-const router = new VueRouter({
-  mode: 'history',
-  routes,
-})
+initVueAuthenticate()
 
 new Vue({
-  router,
+  router: ConfigRouter,
+  store: ConfigStore,
   render: h => h(App),
 }).$mount('#app')
