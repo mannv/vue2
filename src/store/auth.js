@@ -9,7 +9,11 @@ const auth = {
       if (Object.keys(state.data).length === 0) {
         const authInfo = localStorage.getItem('auth-info')
         if (authInfo !== null) {
-          state.data = JSON.parse(authInfo)
+          try {
+            state.data = JSON.parse(authInfo)
+          } catch (e) {
+            console.log('e', e)
+          }
         }
       }
       return state.data.name
