@@ -9,6 +9,8 @@ Vue.config.productionTip = false
 initVueAuthenticate()
 initVuelidate()
 
+Vue.prototype.$log = require('consola')
+
 new Vue({
   router: ConfigRouter,
   store: ConfigStore,
