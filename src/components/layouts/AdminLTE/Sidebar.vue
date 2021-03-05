@@ -67,13 +67,20 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="../widgets.html" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+            <router-link :to="{ name: 'register' }" class="nav-link">
+              <i class="nav-icon fas fa-key"></i>
               <p>
-                Widgets
-                <span class="right badge badge-danger">New</span>
+                Register
               </p>
-            </a>
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link :to="{ name: 'profile' }" class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+                Profile
+              </p>
+            </router-link>
           </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">

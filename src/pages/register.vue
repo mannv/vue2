@@ -1,63 +1,32 @@
 <template>
-  <div class="my-5">
-    <form @submit.prevent="submitRegister">
-      <div class="row mb-3">
-        <label
-          class="col-sm-2 col-form-label"
-          :class="{ 'text-danger': $v.form.name.$error }"
-        >
-          Full name
-        </label>
-        <div class="col-sm-10">
-          <input
-            type="text"
-            class="form-control"
-            :class="{ 'is-invalid': $v.form.name.$error }"
-            v-model.trim="$v.form.name.$model"
-          />
-          <div
-            v-if="$v.form.name.$error && !$v.form.name.required"
-            class="invalid-feedback"
-          >
-            Field is required.
+  <div class="row">
+    <!-- left column -->
+    <div class="col-md-6">
+      <!-- jquery validation -->
+      <div class="card card-primary">
+        <div class="card-header">
+          <h3 class="card-title">
+            Register account
+          </h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form @submit.prevent="submitRegister">
+          <div class="card-body">
+            <FormElement :el="$v.form.name" label="Your name" />
           </div>
-        </div>
+          <!-- /.card-body -->
+          <div class="card-footer">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
       </div>
-      <div class="row mb-3">
-        <label class="col-sm-2 col-form-label">Age</label>
-        <div class="col-sm-10">
-          <input type="text" class="form-control" />
-        </div>
-      </div>
-      <div class="row mb-3">
-        <label class="col-sm-2 col-form-label">Email</label>
-        <div class="col-sm-10">
-          <input
-            type="text"
-            class="form-control"
-            v-model.trim="$v.form.email.$model"
-          />
-        </div>
-      </div>
-      <div class="row mb-3">
-        <label class="col-sm-2 col-form-label">Password</label>
-        <div class="col-sm-10">
-          <input type="password" class="form-control" />
-        </div>
-      </div>
-      <div class="row mb-3">
-        <label class="col-sm-2 col-form-label">Re-Password</label>
-        <div class="col-sm-10">
-          <input type="password" class="form-control" />
-        </div>
-      </div>
-      <div class="row mb-3">
-        <div class="offset-sm-2 col-sm-10">
-          <button type="submit" class="btn btn-primary">Sign in</button>
-        </div>
-      </div>
-    </form>
-    <pre>{{ $v.form }}</pre>
+      <!-- /.card -->
+    </div>
+    <!--/.col (left) -->
+    <div class="col-md-6">
+      <pre>{{ $v }}</pre>
+    </div>
   </div>
 </template>
 
@@ -65,9 +34,11 @@
 import { validationMixin } from 'vuelidate'
 import { required, email, minLength, maxLength } from 'vuelidate/lib/validators'
 import BasePage from '@/components/BasePage'
+import FormElement from '@/components/Form/FormElement'
 export default {
   extends: BasePage,
   mixins: [validationMixin],
+  components: { FormElement },
   data() {
     return {
       form: {
@@ -87,7 +58,11 @@ export default {
       alert('Submit')
     },
     setupHeader() {
-      console.log('---> setupHeader 2')
+      this.$store.dispatch('header/setTitle', 'Register')
+      this.$store.dispatch('header/setBreadcrumb', [
+        { name: 'Home', route: 'index' },
+        { name: 'Register' },
+      ])
     },
   },
   validations: {

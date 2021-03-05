@@ -3,6 +3,7 @@ import AboutIndex from '@/pages/about'
 import ProductIndex from '@/pages/product'
 import LoginPage from '@/pages/login'
 import RegisterPage from '@/pages/register'
+import ProfilePageIndex from '@/pages/profile/index'
 import VueRouter from 'vue-router'
 import Vue from 'vue'
 import auth from '@/middleware/auth'
@@ -46,6 +47,14 @@ const routes = [
     path: '/register',
     name: 'register',
     component: RegisterPage,
+    meta: {
+      layout: 'AdminLTELayout',
+    },
+  },
+  {
+    path: '/profile',
+    name: 'profile',
+    component: ProfilePageIndex,
     meta: {
       layout: 'AdminLTELayout',
     },
