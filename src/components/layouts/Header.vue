@@ -19,9 +19,20 @@
             </router-link>
           </li>
         </ul>
-        <router-link :to="{ name: 'login' }" class="btn btn-default text-white">
-          Login
-        </router-link>
+        <div>
+          <router-link
+            :to="{ name: 'register' }"
+            class="btn btn-default text-white"
+          >
+            Register
+          </router-link>
+          <router-link
+            :to="{ name: 'login' }"
+            class="btn btn-default text-white"
+          >
+            Login
+          </router-link>
+        </div>
       </div>
     </div>
   </header>
