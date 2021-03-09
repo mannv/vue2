@@ -13,11 +13,37 @@
         <!-- form start -->
         <form @submit.prevent="submitRegister">
           <div class="card-body">
-            <FormElement :el="$v.form.name" label="Your name" />
+            <FormElement
+              :el="$v.form.name"
+              :messages="messages.name"
+              label="Your name"
+            />
+            <hr />
+            <FormElement :el="$v.form.email" label="Your email" />
+            <hr />
+            <FormElement
+              name="interests"
+              :el="$v.form.interests"
+              :options="interests"
+              :messages="messages.interests"
+              label="Sở thích"
+              type="checkbox"
+              checkbox-type="carrot"
+            />
+            <hr />
+            <FormElement
+              name="salaryType"
+              :el="$v.form.salaryType"
+              :options="salaryType"
+              label="Tính lương theo"
+              type="radio"
+              checkbox-type="success"
+            />
           </div>
           <!-- /.card-body -->
           <div class="card-footer">
             <button type="submit" class="btn btn-primary">Submit</button>
+            <pre>{{ form }}</pre>
           </div>
         </form>
       </div>
@@ -42,10 +68,33 @@ export default {
   data() {
     return {
       form: {
-        name: '',
+        name: 'mannv',
         email: '',
         password: '',
         rePassword: '',
+        interests: [2],
+        salaryType: null,
+      },
+      interests: [
+        { id: 1, text: 'Du lịch' },
+        { id: 2, text: 'Thể thao' },
+        { id: 3, text: 'Xem Phim' },
+      ],
+      salaryType: [
+        { id: 1, text: 'Gross' },
+        { id: 2, text: 'NET' },
+      ],
+      messages: {
+        name: {
+          required: `Vui lòng nhập tên`,
+          minLength: `Tên ít nhất phải có 4 ký tự`,
+          maxLength: `Tên dài nhất chỉ được nhập 32 ký tự`,
+          isUnique: `Tên đã được sử dụng`,
+        },
+        interests: {
+          required: `Vui lòng chọn sở thích`,
+          maxOption: `Chỉ được chọn tối đa 2 lựa chọn`,
+        },
       },
     }
   },
@@ -71,11 +120,21 @@ export default {
         required,
         minLength: minLength(4),
         maxLength: maxLength(32),
+        isUnique(value) {
+          return value.length !== 10
+        },
       },
       email: {
         required,
         email,
       },
+      interests: {
+        required,
+        maxOption(vl) {
+          return vl.length <= 2
+        },
+      },
+      salaryType: { required },
     },
   },
 }
