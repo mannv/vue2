@@ -58,7 +58,13 @@
 
 <script>
 import { validationMixin } from 'vuelidate'
-import { required, email, minLength, maxLength } from 'vuelidate/lib/validators'
+import {
+  required,
+  email,
+  minLength,
+  maxLength,
+  between,
+} from 'vuelidate/lib/validators'
 import BasePage from '@/components/BasePage'
 import FormElement from '@/components/Form/FormElement'
 export default {
@@ -74,6 +80,7 @@ export default {
         rePassword: '',
         interests: [2],
         salaryType: null,
+        age: 0,
       },
       interests: [
         { id: 1, text: 'Du lịch' },
@@ -92,7 +99,6 @@ export default {
           isUnique: `Tên đã được sử dụng`,
         },
         interests: {
-          required: `Vui lòng chọn sở thích`,
           maxOption: `Chỉ được chọn tối đa 2 lựa chọn`,
         },
       },
@@ -135,6 +141,9 @@ export default {
         },
       },
       salaryType: { required },
+      age: {
+        between: between(20, 30),
+      },
     },
   },
 }

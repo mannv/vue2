@@ -66,7 +66,7 @@
             v-else
             :key="`validate_${index}`"
             class="error invalid-feedback"
-            >{{ key }}</span
+            >{{ defaultErrorMessage(key) }}</span
           >
         </template>
       </template>
@@ -79,6 +79,7 @@
 
 <script>
 import _ from 'lodash'
+import * as util from '@/config/validate-message'
 export default {
   computed: {
     validateOptions() {
@@ -135,6 +136,12 @@ export default {
     },
   },
   methods: {
+    defaultErrorMessage(key) {
+      if (key === 'required') {
+        return util.format(key, this.label)
+      }
+    },
+
     //radio
     setCheckedRadio(opt) {
       return this.el.$model === opt.id
