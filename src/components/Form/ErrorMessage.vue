@@ -99,6 +99,8 @@ export default {
           this.el.$params.between.max
         )
       }
+
+      return key
     },
   },
 }
