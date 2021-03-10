@@ -2109,9 +2109,4 @@
 
   Object.defineProperty(exports, '__esModule', { value: true })
 })
-function initSwitch() {
-  $('input[data-bootstrap-switch]').each(function() {
-    $(this).bootstrapSwitch('state', $(this).prop('checked'))
-  })
-}
 //# sourceMappingURL=adminlte.js.map

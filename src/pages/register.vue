@@ -13,62 +13,84 @@
         <!-- form start -->
         <form @submit.prevent="submitRegister">
           <div class="card-body">
-            <FormElement
-              :el="$v.form.name"
-              :messages="messages.name"
-              label="Your name"
-            />
-            <hr />
-            <FormElement :el="$v.form.age" label="Age" />
-            <hr />
-            <FormElement
-              switch-ref-id="switch_status"
-              ref="switch_status"
-              type="switch"
-              :el="$v.form.status"
-              label="Status"
-            />
-            <FormElement
-              switch-ref-id="switch_demo"
-              ref="switch_demo"
-              type="switch"
-              :el="$v.form.demoSwitch"
-              label="Demo"
-            />
-            <hr />
-            <FormElement :el="$v.form.email" label="Your email" />
-            <hr />
-            <FormElement
-              name="interests"
-              :el="$v.form.interests"
-              :options="interests"
-              :messages="messages.interests"
-              label="Sở thích"
-              type="checkbox"
-              checkbox-type="carrot"
-            />
-            <hr />
-            <FormElement
-              name="salaryType"
-              :el="$v.form.salaryType"
-              :options="salaryType"
-              label="Tính lương theo"
-              type="radio"
-              checkbox-type="success"
-            />
+            <div class="form-group">
+              <label :class="{ 'text-danger': $v.form.name.$error }">
+                Sở thích
+              </label>
+              <el-field
+                type="text"
+                :el="$v.form.name"
+                :messages="messages.name"
+                label="Your name"
+              />
+            </div>
+
+            <div class="form-group">
+              <label :class="{ 'text-danger': $v.form.email.$error }">
+                Email
+              </label>
+              <el-field type="email" :el="$v.form.email" label="Your email" />
+            </div>
+
+            <div class="form-group">
+              <label :class="{ 'text-danger': $v.form.age.$error }">
+                Age
+              </label>
+              <el-field type="email" :el="$v.form.age" label="Age" />
+            </div>
+
+            <div class="form-group">
+              <label :class="{ 'text-danger': $v.form.status.$error }">
+                Status
+              </label>
+              <br />
+              <el-switch :el="$v.form.status"></el-switch>
+            </div>
+
+            <div class="form-group">
+              <label :class="{ 'text-danger': $v.form.demoSwitch.$error }">
+                demo Switch
+              </label>
+              <br />
+              <el-switch :el="$v.form.demoSwitch"></el-switch>
+            </div>
+            <div class="form-group">
+              <label :class="{ 'text-danger': $v.form.interests.$error }">
+                Sở thích
+              </label>
+              <el-checkbox-group
+                label="Sở thích"
+                name="checkbox_interests"
+                :el="$v.form.interests"
+                :options="interests"
+                :messages="messages.interests"
+              ></el-checkbox-group>
+            </div>
+            <div class="form-group">
+              <label :class="{ 'text-danger': $v.form.salaryType.$error }">
+                Tính lương theo
+              </label>
+              <el-radio-group
+                label="Tính lương theo"
+                name="radio_salary_type"
+                :el="$v.form.salaryType"
+                :options="salaryType"
+                type="success"
+              ></el-radio-group>
+            </div>
           </div>
           <!-- /.card-body -->
           <div class="card-footer">
             <button type="submit" class="btn btn-primary">Submit</button>
-            <pre>{{ form }}</pre>
           </div>
         </form>
       </div>
       <!-- /.card -->
+      <pre>{{ $v.form.birthday }}</pre>
     </div>
     <!--/.col (left) -->
     <div class="col-md-6">
-      <pre>{{ $v }}</pre>
+      <pre>{{ form }}</pre>
     </div>
   </div>
 </template>
@@ -85,11 +107,9 @@ import {
   maxValue,
 } from 'vuelidate/lib/validators'
 import BasePage from '@/components/BasePage'
-import FormElement from '@/components/Form/FormElement'
 export default {
   extends: BasePage,
   mixins: [validationMixin],
-  components: { FormElement },
   data() {
     return {
       form: {
@@ -102,6 +122,7 @@ export default {
         age: '',
         status: 0,
         demoSwitch: 1,
+        birthday: '',
       },
       interests: [
         { id: 1, text: 'Du lịch' },
@@ -121,15 +142,15 @@ export default {
   },
   mounted() {
     /* eslint-disable */
-    $.fn.bootstrapSwitch.defaults.onSwitchChange = (event, state) => {
-      const ref = $(event.target).data('ref')
-      if (!ref) {
-        return
-      }
-      this.$refs[ref].clickSwitchButton(state)
-    }
-    initSwitch()
+    // $.fn.bootstrapSwitch.defaults.onSwitchChange = (event, state) => {
+    //   const ref = $(event.target).data('ref')
+    //   if (!ref) {
+    //     return
+    //   }
+    //   this.$refs[ref].clickSwitchButton(state)
+    // }
     /* eslint-enable */
+    // console.log(this.$el)
   },
   methods: {
     submitRegister() {
@@ -176,6 +197,7 @@ export default {
       },
       status: {},
       demoSwitch: {},
+      birthday: { required },
     },
   },
 }

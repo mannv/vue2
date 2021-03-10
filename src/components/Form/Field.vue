@@ -1,0 +1,44 @@
+<template>
+  <div>
+    <input
+      :type="type"
+      class="form-control"
+      :class="{ 'is-invalid': el.$error }"
+      v-model.trim="el.$model"
+    />
+    <el-error-message
+      :el="el"
+      :messages="messages"
+      :label="label"
+    ></el-error-message>
+  </div>
+</template>
+
+<script>
+export default {
+  props: {
+    el: {
+      type: Object,
+      default: () => {
+        return {}
+      },
+    },
+    label: {
+      type: String,
+      default: null,
+    },
+    type: {
+      type: String,
+      default: 'text', //text, email, password
+    },
+    messages: {
+      type: Object,
+      default: () => {
+        return {}
+      },
+    },
+  },
+}
+</script>
+
+<style scoped></style>
