@@ -8,6 +8,7 @@ import Field from '@/components/Form/Field'
 import Switch from '@/components/Form/Switch'
 import ChecboxGroup from '@/components/Form/ChecboxGroup'
 import RadioGroup from '@/components/Form/RadioGroup'
+import DatePicker from '@/components/Form/DatePicker'
 import ErrorMessage from '@/components/Form/ErrorMessage'
 
 Vue.config.productionTip = false
@@ -20,6 +21,7 @@ Vue.component('lte-field', Field)
 Vue.component('lte-switch', Switch)
 Vue.component('lte-checkbox-group', ChecboxGroup)
 Vue.component('lte-radio-group', RadioGroup)
+Vue.component('lte-datepicker', DatePicker)
 Vue.component('lte-error-message', ErrorMessage)
 
 new Vue({

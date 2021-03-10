@@ -29,7 +29,11 @@
               <label :class="{ 'text-danger': $v.form.email.$error }">
                 Email
               </label>
-              <lte-field type="email" :el="$v.form.email" label="Your email"></lte-field>
+              <lte-field
+                type="email"
+                :el="$v.form.email"
+                label="Your email"
+              ></lte-field>
             </div>
 
             <div class="form-group">
@@ -77,6 +81,16 @@
                 :options="salaryType"
                 type="success"
               ></lte-radio-group>
+            </div>
+            <div class="form-group">
+              <label :class="{ 'text-danger': $v.form.birthday.$error }">
+                Sinh nhật
+              </label>
+              <lte-datepicker
+                label="Sinh nhật"
+                :el="$v.form.birthday"
+                type="success"
+              ></lte-datepicker>
             </div>
           </div>
           <!-- /.card-body -->
@@ -197,7 +211,9 @@ export default {
       },
       status: {},
       demoSwitch: {},
-      birthday: { required },
+      birthday: {
+        required,
+      },
     },
   },
 }
