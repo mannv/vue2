@@ -137,8 +137,48 @@ export default {
   },
   methods: {
     defaultErrorMessage(key) {
-      if (key === 'required') {
+      if (
+        _.includes(
+          [
+            'required',
+            'requiredIf',
+            'requiredUnless',
+            'alpha',
+            'alphaNum',
+            'numeric',
+            'integer',
+            'decimal',
+            'email',
+            'ipAddress',
+            'macAddress',
+            'sameAs',
+            'url',
+            'or',
+            'and',
+            'not',
+            'withParams',
+          ],
+          key
+        )
+      ) {
         return util.format(key, this.label)
+      }
+
+      if (_.includes(['minLength', 'minValue'], key)) {
+        return util.format(key, this.label, this.el.$params[key].min)
+      }
+
+      if (_.includes(['maxLength', 'maxValue'], key)) {
+        return util.format(key, this.label, this.el.$params[key].max)
+      }
+
+      if (key === 'between') {
+        return util.format(
+          key,
+          this.label,
+          this.el.$params.between.min,
+          this.el.$params.between.max
+        )
       }
     },
 

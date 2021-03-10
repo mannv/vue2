@@ -19,6 +19,8 @@
               label="Your name"
             />
             <hr />
+            <FormElement :el="$v.form.age" label="Age" />
+            <hr />
             <FormElement :el="$v.form.email" label="Your email" />
             <hr />
             <FormElement
@@ -63,7 +65,9 @@ import {
   email,
   minLength,
   maxLength,
-  between,
+  // between,
+  minValue,
+  maxValue,
 } from 'vuelidate/lib/validators'
 import BasePage from '@/components/BasePage'
 import FormElement from '@/components/Form/FormElement'
@@ -80,7 +84,7 @@ export default {
         rePassword: '',
         interests: [2],
         salaryType: null,
-        age: 0,
+        age: '',
       },
       interests: [
         { id: 1, text: 'Du lịch' },
@@ -92,12 +96,6 @@ export default {
         { id: 2, text: 'NET' },
       ],
       messages: {
-        name: {
-          required: `Vui lòng nhập tên`,
-          minLength: `Tên ít nhất phải có 4 ký tự`,
-          maxLength: `Tên dài nhất chỉ được nhập 32 ký tự`,
-          isUnique: `Tên đã được sử dụng`,
-        },
         interests: {
           maxOption: `Chỉ được chọn tối đa 2 lựa chọn`,
         },
@@ -142,7 +140,10 @@ export default {
       },
       salaryType: { required },
       age: {
-        between: between(20, 30),
+        required,
+        minValue: minValue(10),
+        maxValue: maxValue(20),
+        // between: between(20, 30),
       },
     },
   },
