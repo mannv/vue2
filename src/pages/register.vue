@@ -21,6 +21,21 @@
             <hr />
             <FormElement :el="$v.form.age" label="Age" />
             <hr />
+            <FormElement
+              switch-ref-id="switch_status"
+              ref="switch_status"
+              type="switch"
+              :el="$v.form.status"
+              label="Status"
+            />
+            <FormElement
+              switch-ref-id="switch_demo"
+              ref="switch_demo"
+              type="switch"
+              :el="$v.form.demoSwitch"
+              label="Demo"
+            />
+            <hr />
             <FormElement :el="$v.form.email" label="Your email" />
             <hr />
             <FormElement
@@ -85,6 +100,8 @@ export default {
         interests: [2],
         salaryType: null,
         age: '',
+        status: 0,
+        demoSwitch: 1,
       },
       interests: [
         { id: 1, text: 'Du lịch' },
@@ -101,6 +118,18 @@ export default {
         },
       },
     }
+  },
+  mounted() {
+    /* eslint-disable */
+    $.fn.bootstrapSwitch.defaults.onSwitchChange = (event, state) => {
+      const ref = $(event.target).data('ref')
+      if (!ref) {
+        return
+      }
+      this.$refs[ref].clickSwitchButton(state)
+    }
+    initSwitch()
+    /* eslint-enable */
   },
   methods: {
     submitRegister() {
@@ -145,6 +174,8 @@ export default {
         maxValue: maxValue(20),
         // between: between(20, 30),
       },
+      status: {},
+      demoSwitch: {},
     },
   },
 }

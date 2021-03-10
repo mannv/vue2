@@ -51,6 +51,22 @@
       </div>
     </template>
 
+    <!-- Switch -->
+    <template v-if="type === 'switch'">
+      <div :class="{ 'is-invalid': el.$error }">
+        <input
+          type="checkbox"
+          :checked="el.$model === 1"
+          data-bootstrap-switch
+          :data-ref="switchRefId"
+          :data-off-color="switchColor[0]"
+          :data-on-color="switchColor[1]"
+          :data-on-text="switchText[0]"
+          :data-off-text="switchText[1]"
+        />
+      </div>
+    </template>
+
     <!-- ERROR Message -->
     <template v-if="el.$error">
       <template v-for="(key, index) in validateOptions">
@@ -134,6 +150,22 @@ export default {
         return {}
       },
     },
+    switchColor: {
+      type: Array,
+      default: () => {
+        return ['danger', 'success']
+      },
+    },
+    switchText: {
+      type: Array,
+      default: () => {
+        return ['On', 'Off']
+      },
+    },
+    switchRefId: {
+      type: String,
+      default: '',
+    },
   },
   methods: {
     defaultErrorMessage(key) {
@@ -202,6 +234,11 @@ export default {
           return vl !== opt.id
         })
       }
+    },
+
+    //switch
+    clickSwitchButton(state) {
+      this.el.$model = state === true ? 1 : 0
     },
   },
 }
