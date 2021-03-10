@@ -15,28 +15,28 @@
           <div class="card-body">
             <div class="form-group">
               <label :class="{ 'text-danger': $v.form.name.$error }">
-                Sở thích
+                Tên của bạn
               </label>
-              <el-field
+              <lte-field
                 type="text"
                 :el="$v.form.name"
                 :messages="messages.name"
-                label="Your name"
-              />
+                label="Tên của bạn"
+              ></lte-field>
             </div>
 
             <div class="form-group">
               <label :class="{ 'text-danger': $v.form.email.$error }">
                 Email
               </label>
-              <el-field type="email" :el="$v.form.email" label="Your email" />
+              <lte-field type="email" :el="$v.form.email" label="Your email"></lte-field>
             </div>
 
             <div class="form-group">
               <label :class="{ 'text-danger': $v.form.age.$error }">
                 Age
               </label>
-              <el-field type="email" :el="$v.form.age" label="Age" />
+              <lte-field type="email" :el="$v.form.age" label="Age"></lte-field>
             </div>
 
             <div class="form-group">
@@ -44,7 +44,7 @@
                 Status
               </label>
               <br />
-              <el-switch :el="$v.form.status"></el-switch>
+              <lte-switch :el="$v.form.status"></lte-switch>
             </div>
 
             <div class="form-group">
@@ -52,31 +52,31 @@
                 demo Switch
               </label>
               <br />
-              <el-switch :el="$v.form.demoSwitch"></el-switch>
+              <lte-switch :el="$v.form.demoSwitch"></lte-switch>
             </div>
             <div class="form-group">
               <label :class="{ 'text-danger': $v.form.interests.$error }">
                 Sở thích
               </label>
-              <el-checkbox-group
+              <lte-checkbox-group
                 label="Sở thích"
                 name="checkbox_interests"
                 :el="$v.form.interests"
                 :options="interests"
                 :messages="messages.interests"
-              ></el-checkbox-group>
+              ></lte-checkbox-group>
             </div>
             <div class="form-group">
               <label :class="{ 'text-danger': $v.form.salaryType.$error }">
                 Tính lương theo
               </label>
-              <el-radio-group
+              <lte-radio-group
                 label="Tính lương theo"
                 name="radio_salary_type"
                 :el="$v.form.salaryType"
                 :options="salaryType"
                 type="success"
-              ></el-radio-group>
+              ></lte-radio-group>
             </div>
           </div>
           <!-- /.card-body -->

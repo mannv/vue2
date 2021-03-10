@@ -15,11 +15,11 @@
         {{ opt.text }}
       </label>
     </div>
-    <el-error-message
+    <lte-error-message
       :el="el"
       :messages="messages"
       :label="label"
-    ></el-error-message>
+    ></lte-error-message>
   </div>
 </template>
 

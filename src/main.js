@@ -16,11 +16,11 @@ initVuelidate()
 
 Vue.prototype.$log = require('consola')
 
-Vue.component('el-field', Field)
-Vue.component('el-switch', Switch)
-Vue.component('el-checkbox-group', ChecboxGroup)
-Vue.component('el-radio-group', RadioGroup)
-Vue.component('el-error-message', ErrorMessage)
+Vue.component('lte-field', Field)
+Vue.component('lte-switch', Switch)
+Vue.component('lte-checkbox-group', ChecboxGroup)
+Vue.component('lte-radio-group', RadioGroup)
+Vue.component('lte-error-message', ErrorMessage)
 
 new Vue({
   router: ConfigRouter,
