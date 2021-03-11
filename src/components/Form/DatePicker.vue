@@ -70,6 +70,9 @@ export default {
       ...this.options,
       ignoreReadonly: true,
       useCurrent: false,
+      icons: {
+        time: 'far fa-clock',
+      },
     })
     $(`#${this.randomId}`).on('change.datetimepicker', e => {
       const format = this.options.format ?? 'YYYY-MM-DD'

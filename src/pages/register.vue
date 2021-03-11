@@ -89,8 +89,39 @@
               <lte-datepicker
                 label="Sinh nhật"
                 :el="$v.form.birthday"
-                type="success"
               ></lte-datepicker>
+            </div>
+            <div class="form-group">
+              <label :class="{ 'text-danger': $v.form.join.$error }">
+                Join date
+              </label>
+              <lte-datepicker
+                label="Join date"
+                :el="$v.form.join"
+                :options="{ format: '' }"
+              ></lte-datepicker>
+            </div>
+            <div class="form-group">
+              <label :class="{ 'text-danger': $v.form.city.$error }">
+                Thành phố
+              </label>
+              <lte-select
+                label="Thành phố"
+                :el="$v.form.city"
+                :multiple="true"
+                :options="cities"
+              ></lte-select>
+            </div>
+
+            <div class="form-group">
+              <label :class="{ 'text-danger': $v.form.city2.$error }">
+                Thành phố 2
+              </label>
+              <lte-select
+                label="Thành phố"
+                :el="$v.form.city2"
+                :options="cities"
+              ></lte-select>
             </div>
           </div>
           <!-- /.card-body -->
@@ -137,6 +168,9 @@ export default {
         status: 0,
         demoSwitch: 1,
         birthday: '',
+        join: '',
+        city: [],
+        city2: null,
       },
       interests: [
         { id: 1, text: 'Du lịch' },
@@ -152,6 +186,14 @@ export default {
           maxOption: `Chỉ được chọn tối đa 2 lựa chọn`,
         },
       },
+      cities: [
+        { id: 1, text: 'Hà Nội' },
+        { id: 2, text: 'TP. HCM' },
+        { id: 3, text: 'Đà Nẵng' },
+        { id: 4, text: 'Quảng Ninh' },
+        { id: 5, text: 'Hải Phòng' },
+        { id: 6, text: 'Bình Thuận' },
+      ],
     }
   },
   mounted() {
@@ -214,6 +256,9 @@ export default {
       birthday: {
         required,
       },
+      join: { required },
+      city: { required },
+      city2: { required },
     },
   },
 }
