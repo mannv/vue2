@@ -169,8 +169,8 @@ export default {
         demoSwitch: 1,
         birthday: '',
         join: '',
-        city: [],
-        city2: null,
+        city: [1, 5],
+        city2: 3,
       },
       interests: [
         { id: 1, text: 'Du lịch' },
