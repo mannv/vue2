@@ -49,7 +49,7 @@ export default {
       default: false,
     },
     options: {
-      type: Object,
+      type: Array,
       default: () => {
         return []
       },

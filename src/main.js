@@ -10,6 +10,7 @@ import ChecboxGroup from '@/components/Form/ChecboxGroup'
 import RadioGroup from '@/components/Form/RadioGroup'
 import DatePicker from '@/components/Form/DatePicker'
 import Select2 from '@/components/Form/Select2'
+import File from '@/components/Form/File'
 import ErrorMessage from '@/components/Form/ErrorMessage'
 
 Vue.config.productionTip = false
@@ -19,6 +20,7 @@ initVuelidate()
 Vue.prototype.$log = require('consola')
 
 Vue.component('lte-field', Field)
+Vue.component('lte-file', File)
 Vue.component('lte-switch', Switch)
 Vue.component('lte-checkbox-group', ChecboxGroup)
 Vue.component('lte-radio-group', RadioGroup)

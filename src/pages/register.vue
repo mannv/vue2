@@ -123,6 +123,13 @@
                 :options="cities"
               ></lte-select>
             </div>
+
+            <div class="form-group">
+              <label :class="{ 'text-danger': $v.form.avatar.$error }">
+                Avatar
+              </label>
+              <lte-file :el="$v.form.avatar" label="Avatar"></lte-file>
+            </div>
           </div>
           <!-- /.card-body -->
           <div class="card-footer">
@@ -171,6 +178,7 @@ export default {
         join: '',
         city: [1, 5],
         city2: 3,
+        avatar: null,
       },
       interests: [
         { id: 1, text: 'Du lịch' },
@@ -259,6 +267,7 @@ export default {
       join: { required },
       city: { required },
       city2: { required },
+      avatar: { required },
     },
   },
 }
