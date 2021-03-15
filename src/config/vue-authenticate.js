@@ -18,18 +18,18 @@ function initVueAuthenticate() {
 
   Object.defineProperties(Vue.prototype.$auth, {
     demo: {
-      value: function(msg) {
+      value: function (msg) {
         console.log('msg: ', msg)
         this.storage.setItem('demo-msg', msg)
       },
     },
     setItem: {
-      value: function(key, value) {
+      value: function (key, value) {
         this.storage.setItem(key, value)
       },
     },
     user: {
-      value: function() {
+      value: function () {
         if (!this.isAuthenticated()) {
           return null
         }

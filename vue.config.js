@@ -1,6 +1,6 @@
 module.exports = {
   runtimeCompiler: true,
   devServer: {
-    proxy: 'https://api.blackbestbuy.com',
+    proxy: process.env.API_URL,
   },
 }

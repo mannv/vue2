@@ -26,6 +26,7 @@ module.exports = {
     $: 'readonly',
     require: true,
     process: true,
+    module: true,
   },
   // required to lint *.vue files
   plugins: ['vue'],

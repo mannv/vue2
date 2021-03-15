@@ -10,7 +10,7 @@ Vue.prototype.$log = require('consola')
 window._ = require('lodash')
 import AdminLTEForm from '@/plugins/adminlte-form'
 Vue.use(AdminLTEForm)
-Vue.component()
+
 Vue.config.productionTip = false
 initVueAuthenticate()
 initVuelidate()
