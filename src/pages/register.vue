@@ -203,16 +203,7 @@ export default {
     }
   },
   mounted() {
-    /* eslint-disable */
-    // $.fn.bootstrapSwitch.defaults.onSwitchChange = (event, state) => {
-    //   const ref = $(event.target).data('ref')
-    //   if (!ref) {
-    //     return
-    //   }
-    //   this.$refs[ref].clickSwitchButton(state)
-    // }
-    /* eslint-enable */
-    // console.log(this.$el)
+    document.title = 'Register Data'
   },
   methods: {
     submitRegister() {
