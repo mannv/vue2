@@ -48,7 +48,6 @@
 </template>
 
 <script>
-import _ from 'lodash'
 import BasePage from '@/components/BasePage'
 import { maxLength, minLength, required } from 'vuelidate/lib/validators'
 

@@ -23,7 +23,6 @@
 </template>
 
 <script>
-import _ from 'lodash'
 import * as util from '@/config/validate-message'
 
 export default {

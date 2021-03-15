@@ -13,6 +13,8 @@ import Select2 from '@/components/Form/Select2'
 import File from '@/components/Form/File'
 import ErrorMessage from '@/components/Form/ErrorMessage'
 
+// window._ = require('lodash')
+
 Vue.config.productionTip = false
 initVueAuthenticate()
 initVuelidate()
