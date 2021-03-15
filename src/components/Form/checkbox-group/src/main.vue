@@ -25,6 +25,7 @@
 
 <script>
 export default {
+  name: 'LteCheckboxGroup',
   props: {
     el: {
       type: Object,
@@ -67,7 +68,7 @@ export default {
       if (!_.includes(this.el.$model, opt.id)) {
         this.el.$model.push(opt.id)
       } else {
-        this.el.$model = _.filter(this.el.$model, vl => {
+        this.el.$model = _.filter(this.el.$model, (vl) => {
           return vl !== opt.id
         })
       }

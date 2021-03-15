@@ -6,7 +6,7 @@
       class="form-control select2"
       :multiple="multiple"
       :disabled="disabled"
-      style="width: 100%;"
+      style="width: 100%"
     >
       <option v-if="!multiple"></option>
       <option
@@ -28,6 +28,7 @@
 
 <script>
 export default {
+  name: 'LteSelect',
   props: {
     el: {
       type: Object,
@@ -69,14 +70,13 @@ export default {
     this.randomId = `select_${_.uniqueId()}`
   },
   mounted() {
-    /* eslint-disable */
     $('#' + this.randomId).select2({
       placeholder: '-- Select --',
       theme: 'bootstrap4',
       allowClear: !this.disabled,
     })
 
-    $('#' + this.randomId).on('select2:select', e => {
+    $('#' + this.randomId).on('select2:select', (e) => {
       const { id } = e.params.data
       if (this.multiple) {
         if (!_.includes(this.el.$model, id)) {
@@ -86,24 +86,24 @@ export default {
         this.el.$model = id
       }
     })
-    $('#' + this.randomId).on('select2:unselect', e => {
+    $('#' + this.randomId).on('select2:unselect', (e) => {
       const { id } = e.params.data
       if (this.multiple) {
-        this.el.$model = _.filter(this.el.$model, vl => {
+        this.el.$model = _.filter(this.el.$model, (vl) => {
           return vl !== id
         })
       } else {
         this.el.$model = null
       }
     })
-    $('#' + this.randomId).on('select2:clear', e => {
+    $('#' + this.randomId).on('select2:clear', (e) => {
+      console.log('e', e)
       if (this.multiple) {
         this.el.$model = []
       } else {
         this.el.$model = null
       }
     })
-    /* eslint-enable */
   },
   methods: {
     checkSelected(id) {

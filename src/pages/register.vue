@@ -86,20 +86,20 @@
               <label :class="{ 'text-danger': $v.form.birthday.$error }">
                 Sinh nhật
               </label>
-              <lte-datepicker
+              <lte-date-picker
                 label="Sinh nhật"
                 :el="$v.form.birthday"
-              ></lte-datepicker>
+              ></lte-date-picker>
             </div>
             <div class="form-group">
               <label :class="{ 'text-danger': $v.form.join.$error }">
                 Join date
               </label>
-              <lte-datepicker
+              <lte-date-picker
                 label="Join date"
                 :el="$v.form.join"
                 :options="{ format: '' }"
-              ></lte-datepicker>
+              ></lte-date-picker>
             </div>
             <div class="form-group">
               <label :class="{ 'text-danger': $v.form.city.$error }">

@@ -1,7 +1,7 @@
-<!-- https://getdatepicker.com/5-4/Usage/ -->
+<!--https://getdatepicker.com/5-4/Usage/-->
 <template>
   <div>
-    <div class="input-group date" :id="randomId" data-target-input="nearest">
+    <div :id="randomId" class="input-group date" data-target-input="nearest">
       <input
         readonly
         type="text"
@@ -29,6 +29,7 @@
 
 <script>
 export default {
+  name: 'LteDatePicker',
   props: {
     el: {
       type: Object,
@@ -64,7 +65,6 @@ export default {
     this.randomId = `datepicker_${_.uniqueId()}`
   },
   mounted() {
-    /* eslint-disable */
     $(`#${this.randomId}`).datetimepicker({
       ...this.options,
       ignoreReadonly: true,
@@ -73,11 +73,10 @@ export default {
         time: 'far fa-clock',
       },
     })
-    $(`#${this.randomId}`).on('change.datetimepicker', e => {
+    $(`#${this.randomId}`).on('change.datetimepicker', (e) => {
       const format = this.options.format ?? 'YYYY-MM-DD'
       this.el.$model = e.date.format(format)
     })
-    /* eslint-enable */
   },
 }
 </script>

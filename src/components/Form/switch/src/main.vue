@@ -12,6 +12,8 @@
 
 <script>
 export default {
+  // eslint-disable-next-line
+  name: 'lte-switch',
   props: {
     el: {
       type: Object,
@@ -33,15 +35,13 @@ export default {
     },
   },
   mounted() {
-    /* eslint-disable */
     let self = this
     $(this.$el).bootstrapSwitch({
-      onSwitchChange: function(event, state) {
+      onSwitchChange: function (event, state) {
         event.preventDefault()
         self.changeValue(state)
       },
     })
-    /* eslint-enable */
   },
   methods: {
     changeValue(state) {

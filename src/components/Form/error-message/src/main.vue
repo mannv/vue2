@@ -26,6 +26,7 @@
 import * as util from '@/config/validate-message'
 
 export default {
+  name: 'LteErrorMessage',
   props: {
     label: {
       type: String,
@@ -47,7 +48,7 @@ export default {
   computed: {
     validateOptions() {
       const keys = Object.keys(this.el)
-      return _.filter(keys, item => {
+      return _.filter(keys, (item) => {
         return !_.startsWith(item, '$')
       })
     },

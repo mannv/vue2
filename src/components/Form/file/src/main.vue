@@ -21,6 +21,7 @@
 
 <script>
 export default {
+  name: 'LteFile',
   props: {
     el: {
       type: Object,
@@ -52,14 +53,13 @@ export default {
     this.randomId = `custom_file_${_.uniqueId()}`
   },
   mounted() {
-    /* eslint-disable */
+    /* eslint-disable-next-line */
     bsCustomFileInput.init('#' + this.randomId)
 
-    $('#' + this.randomId).bind('change', e => {
+    $('#' + this.randomId).bind('change', (e) => {
       const { files } = e.target
       this.el.$model = files[0]
     })
-    /* eslint-enable */
   },
   methods: {
     onFileChange(e) {
