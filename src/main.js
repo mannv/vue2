@@ -9,7 +9,9 @@ Vue.prototype.$log = require('consola')
 
 window._ = require('lodash')
 import AdminLTEForm from '@/plugins/adminlte-form'
+import SweetAlert2 from '@/plugins/sweetalert2'
 Vue.use(AdminLTEForm)
+Vue.use(SweetAlert2, { vue: Vue })
 
 Vue.config.productionTip = false
 initVueAuthenticate()

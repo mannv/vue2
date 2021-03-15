@@ -56,6 +56,30 @@
       >
         Launch Primary Modal
       </button>
+      <hr />
+      <h2>Demo Popup</h2>
+      <button class="btn btn-success mr-3" @click="demo('success')">
+        success
+      </button>
+      <button class="btn btn-danger mr-3" @click="demo('error')">error</button>
+      <button class="btn btn-warning mr-3" @click="demo('warning')">
+        warning
+      </button>
+      <button class="btn btn-info mr-3" @click="demo('info')">info</button>
+      <hr />
+      <h2>Demo Toast</h2>
+      <button class="btn btn-success mr-3" @click="demo('success', true)">
+        success
+      </button>
+      <button class="btn btn-danger mr-3" @click="demo('error', true)">
+        error
+      </button>
+      <button class="btn btn-warning mr-3" @click="demo('warning', true)">
+        warning
+      </button>
+      <button class="btn btn-info mr-3" @click="demo('info', true)">
+        info
+      </button>
     </div>
 
     <portal to="bt-modal">
@@ -155,6 +179,14 @@ export default {
         { name: 'Home', route: 'index' },
         { name: 'Profile' },
       ])
+    },
+    demo(type, toast = false) {
+      this.$swal[type](
+        {
+          text: `Lorem ipsum dolor sit amet, consetetur sadipscing elitr: ${type}`,
+        },
+        toast
+      )
     },
     submitRegister() {
       this.$v.form.$touch()
