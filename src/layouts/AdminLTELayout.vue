@@ -25,6 +25,7 @@
       <!-- /.content-wrapper -->
       <Footer />
     </div>
+    <portal-target name="bt-modal" multiple> </portal-target>
   </div>
 </template>
 <script>

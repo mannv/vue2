@@ -15,6 +15,9 @@ Vue.config.productionTip = false
 initVueAuthenticate()
 initVuelidate()
 
+import PortalVue from 'portal-vue'
+Vue.use(PortalVue)
+
 new Vue({
   router: ConfigRouter,
   store: ConfigStore,
