@@ -6,8 +6,8 @@
       :class="`icheck-${type} d-inline`"
     >
       <input
-        type="checkbox"
         :id="`checkout_${name}_${optIndex}`"
+        type="checkbox"
         :checked="setCheckedCheckbox(opt)"
         @click="clickCheckBox(opt)"
       />

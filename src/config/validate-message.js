@@ -35,7 +35,7 @@ export function format(...args) {
     return f.apply(null, args.slice(1))
   }
   if (typeof f === 'string') {
-    let str = String(f).replace(formatRegExp, x => {
+    let str = String(f).replace(formatRegExp, (x) => {
       if (x === '%%') {
         return '%'
       }

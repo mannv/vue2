@@ -1,10 +1,10 @@
 <template>
   <div>
     <input
+      v-model.trim="el.$model"
       :type="type"
       class="form-control"
       :class="{ 'is-invalid': el.$error }"
-      v-model.trim="el.$model"
     />
     <lte-error-message
       :el="el"

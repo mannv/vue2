@@ -6,7 +6,7 @@
         src="/adminlte/img/AdminLTELogo.png"
         alt="AdminLTE Logo"
         class="brand-image img-circle elevation-3"
-        style="opacity: .8"
+        style="opacity: 0.8"
       />
       <span class="brand-text font-weight-light">AdminLTE 3</span>
     </a>
@@ -69,17 +69,13 @@
           <li class="nav-item">
             <router-link :to="{ name: 'register' }" class="nav-link">
               <i class="nav-icon fas fa-key"></i>
-              <p>
-                Register
-              </p>
+              <p>Register</p>
             </router-link>
           </li>
           <li class="nav-item">
             <router-link :to="{ name: 'profile' }" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
-              <p>
-                Profile
-              </p>
+              <p>Profile</p>
             </router-link>
           </li>
           <li class="nav-item has-treeview">
@@ -149,9 +145,7 @@
           <li class="nav-item">
             <a href="../gallery.html" class="nav-link">
               <i class="nav-icon far fa-image"></i>
-              <p>
-                Gallery
-              </p>
+              <p>Gallery</p>
             </a>
           </li>
         </ul>

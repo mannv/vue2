@@ -6,9 +6,9 @@
       :class="`icheck-${type} d-inline`"
     >
       <input
+        :id="`checkout_${name}_${optIndex}`"
         :name="name"
         type="radio"
-        :id="`checkout_${name}_${optIndex}`"
         :checked="setCheckedRadio(opt)"
         @click="clickRadio(opt)"
       />
