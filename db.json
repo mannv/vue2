@@ -8,5 +8,20 @@
   ],
   "profile": {
     "name": "typicode"
+  },
+  "profile1": {
+    "name": "typicode 1"
+  },
+  "profile2": {
+    "name": "typicode 2"
+  },
+  "profile3": {
+    "name": "typicode 3"
+  },
+  "profile4": {
+    "name": "typicode 4"
+  },
+  "profile5": {
+    "name": "typicode 5"
   }
 }
