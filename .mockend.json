@@ -4,6 +4,11 @@
     "content": "string",
     "views": "int",
     "published": "boolean",
-    "createdAt": "date"
+    "createdAt": "date",
+    "comment": "Comment[]"
+  },
+  "Comment": {
+    "body": "string",
+    "post": "Post"
   }
 }
