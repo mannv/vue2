@@ -1,0 +1,12 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "hello",
+      "content": "this is content data"
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
