@@ -11,6 +11,14 @@ import auth from '@/middleware/auth'
 Vue.use(VueRouter)
 const routes = [
   {
+    path: '/ag-gird',
+    name: 'ag-gird-index',
+    component: () => import('@/pages/ag-gird/index'),
+    meta: {
+      layout: 'HomeLayout',
+    },
+  },
+  {
     path: '/',
     name: 'index',
     component: HomeIndex,
