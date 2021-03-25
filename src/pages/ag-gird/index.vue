@@ -29,6 +29,7 @@
       :default-col-def="defaultColDef"
       :pagination="true"
       :pagination-page-size="10"
+      :grid-options="gridOptions"
     >
     </ag-grid-vue>
 
@@ -46,6 +47,21 @@ export default {
       columnDefs: null,
       defaultColDef: {
         flex: 1,
+      },
+      gridOptions: {
+        localeText: {
+          // Text Filter
+          contains: 'A Contains',
+          notContains: 'A Not contains',
+          startsWith: 'A Starts with',
+          endsWith: 'A Ends with',
+
+          // Number Filter & Text Filter
+          filterOoo: 'B Filter...',
+          equals: 'B Equals',
+          notEqual: 'B Not equal',
+          empty: 'B Choose One',
+        },
       },
     }
   },
