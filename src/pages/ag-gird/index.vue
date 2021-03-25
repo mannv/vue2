@@ -58,11 +58,52 @@ export default {
         'https://mockend.com/mannv/vue2/posts'
       )
       this.rowData = data
+      this.rowData = _.map(data, (item) => {
+        const dateObj = new Date(item.createdAt.substring(0, 10))
+        item.createdAt = `${
+          dateObj.getMonth() + 1
+        }/${dateObj.getDate()}/${dateObj.getFullYear()}`
+        return item
+      })
 
       this.columnDefs = [
         { headerName: 'ID', field: 'id', maxWidth: 50 },
         { headerName: 'TITLE', field: 'title' },
         { headerName: 'VIEWS', field: 'views' },
+        {
+          headerName: 'createdAt',
+          field: 'createdAt',
+          filter: 'agDateColumnFilter',
+          filterParams: {
+            buttons: ['clear', 'apply'],
+            comparator: function (filterLocalDateAtMidnight, cellValue) {
+              var dateAsString = cellValue
+              if (dateAsString == null) return -1
+              var dateParts = dateAsString.split('/')
+              var cellDate = new Date(
+                Number(dateParts[2]),
+                Number(dateParts[1]) - 1,
+                Number(dateParts[0])
+              )
+              console.log(
+                '%d - %d',
+                filterLocalDateAtMidnight.getTime(),
+                cellDate.getTime()
+              )
+              if (filterLocalDateAtMidnight.getTime() === cellDate.getTime()) {
+                return 0
+              }
+              if (cellDate < filterLocalDateAtMidnight) {
+                return -1
+              }
+              if (cellDate > filterLocalDateAtMidnight) {
+                return 1
+              }
+              return 1
+            },
+            browserDatePicker: true,
+          },
+        },
       ]
     },
   },

@@ -42,6 +42,7 @@ export default {
       columnDefs: null,
       defaultColDef: {
         flex: 1,
+        unSortIcon: true,
       },
     }
   },
