@@ -16,6 +16,7 @@
       style="width: 100%; height: 500px"
       class="ag-theme-alpine"
       :context="context"
+      :default-col-def="defaultColDef"
       :column-defs="columnDefs"
       :row-data="rowData"
       :pagination="true"
@@ -39,6 +40,9 @@ export default {
       context: null,
       rowData: [],
       columnDefs: null,
+      defaultColDef: {
+        flex: 1,
+      },
     }
   },
   beforeMount() {
@@ -80,7 +84,7 @@ export default {
           sortable: true,
           unSortIcon: true,
         },
-        { headerName: 'CONTENT', field: 'content' },
+        { headerName: 'CONTENT', field: 'content', resizable: true },
         {
           headerName: 'STATUS',
           field: 'id',

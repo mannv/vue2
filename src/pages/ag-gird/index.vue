@@ -26,6 +26,7 @@
       class="ag-theme-alpine"
       :column-defs="columnDefs"
       :row-data="rowData"
+      :default-col-def="defaultColDef"
       :pagination="true"
       :pagination-page-size="10"
     >
@@ -43,6 +44,9 @@ export default {
     return {
       rowData: [],
       columnDefs: null,
+      defaultColDef: {
+        flex: 1,
+      },
     }
   },
   beforeMount() {
@@ -56,7 +60,7 @@ export default {
       this.rowData = data
 
       this.columnDefs = [
-        { headerName: 'ID', field: 'id' },
+        { headerName: 'ID', field: 'id', maxWidth: 50 },
         { headerName: 'TITLE', field: 'title' },
         { headerName: 'VIEWS', field: 'views' },
       ]
