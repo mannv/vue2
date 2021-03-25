@@ -21,13 +21,36 @@
       </router-link>
     </div>
 
-    <input
-      type="text"
-      class="form-control my-3"
-      v-model="term"
-      placeholder="Quick filter..."
-      @input="onQuickFilterChanged"
-    />
+    <div class="my-3">
+      <h1>Quick filter</h1>
+      <input
+        type="text"
+        class="form-control"
+        v-model="term"
+        placeholder="Quick filter..."
+        @input="onQuickFilterChanged"
+      />
+    </div>
+
+    <div class="my-3">
+      <h1>Filter</h1>
+
+      <div class="form-inline">
+        <input
+          type="text"
+          class="form-control"
+          v-model="searchTitle"
+          placeholder="Title"
+        />
+        <input
+          type="text"
+          class="form-control mx-2"
+          v-model="searchView"
+          placeholder="View Number"
+        />
+        <button class="btn btn-danger" @click="search">Search</button>
+      </div>
+    </div>
 
     <ag-grid-vue
       style="width: 100%; height: 500px"
@@ -41,6 +64,12 @@
     >
     </ag-grid-vue>
 
+    <div class="my-4">
+      <button class="btn btn-primary" @click="totalSelected">
+        Get Selected
+      </button>
+    </div>
+
     <div style="max-height: 300px; overflow-y: auto; background: #ebffd3">
       <pre>{{ rowData }}</pre>
     </div>
@@ -52,6 +81,8 @@ export default {
   data() {
     return {
       term: '',
+      searchTitle: '',
+      searchView: '',
       rowData: [],
       columnDefs: null,
       defaultColDef: {
@@ -78,6 +109,25 @@ export default {
     this.loadData()
   },
   methods: {
+    totalSelected() {
+      console.log(this.gridOptions.api)
+      // this.$swal.info({ text: 'demo' })
+    },
+    //https://www.ag-grid.com/vue-grid/filter-api/#get--set-all-filter-models
+    search() {
+      this.gridOptions.api.setFilterModel({
+        title: {
+          filterType: 'text',
+          type: 'startsWith',
+          filter: this.searchTitle,
+        },
+        views: {
+          filterType: 'number',
+          type: 'equal',
+          filter: this.searchView,
+        },
+      })
+    },
     onQuickFilterChanged() {
       this.gridOptions.api.setQuickFilter(this.term)
     },
