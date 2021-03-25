@@ -1,8 +1,17 @@
 <template>
   <span>
-    <span>{{ cellValue }}</span>
-    <button class="btn btn-sm btn-danger" @click="buttonClicked()">
-      Push For Total
+    <button
+      class="btn btn-sm"
+      :class="{
+        'btn-success': cellValue % 2 === 0,
+        'btn-danger': cellValue % 2 !== 0,
+      }"
+      @click="buttonClicked()"
+    >
+      <span v-if="cellValue % 2 === 0">
+        <i class="fa fa-lock-open"></i> Active
+      </span>
+      <span v-else><i class="fa fa-lock"></i> Deactive</span>
     </button>
   </span>
 </template>
@@ -27,7 +36,8 @@ export default {
     },
 
     buttonClicked() {
-      alert(`${this.cellValue} medals won!`)
+      // alert(`${this.cellValue} medals won!`)
+      this.params.context.componentParent.changeStatus(this.cellValue)
     },
 
     getValueToDisplay(params) {
