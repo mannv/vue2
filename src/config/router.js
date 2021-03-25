@@ -35,6 +35,14 @@ const routes = [
     },
   },
   {
+    path: '/ag-gird/custom-cell-pro',
+    name: 'ag-gird-custom-cell-pro',
+    component: () => import('@/pages/ag-gird/custom-cell-pro'),
+    meta: {
+      layout: 'HomeLayout',
+    },
+  },
+  {
     path: '/',
     name: 'index',
     component: HomeIndex,

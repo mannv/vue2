@@ -1,14 +1,14 @@
 <template>
   <div>
-    <h1>Custom Cell</h1>
+    <h1>Custom Cell - AG Gird Pro</h1>
 
     <div class="mb-3">
       <router-link
         target="_blank"
-        :to="{ name: 'ag-gird-custom-cell-pro' }"
+        :to="{ name: 'ag-gird-custom-cell' }"
         class="btn btn-primary"
       >
-        AG Gird Pro
+        AG Gird FREE
       </router-link>
     </div>
 
@@ -31,6 +31,7 @@
 
 <script>
 import StatusCellRenderer from '@/components/Gird/StatusCellRenderer'
+import 'ag-grid-enterprise'
 export default {
   // eslint-disable-next-line
   components: { StatusCellRenderer },
@@ -78,11 +79,11 @@ export default {
         {
           headerName: 'TITLE',
           field: 'title',
-          // filter: 'agSetColumnFilter',
-          filter: 'agTextColumnFilter',
-          filterParams: {
-            buttons: ['clear', 'apply'],
-          },
+          filter: 'agSetColumnFilter',
+          // filter: 'agTextColumnFilter',
+          // filterParams: {
+          //   buttons: ['clear', 'apply'],
+          // },
         },
         {
           headerName: 'VIEWS',
