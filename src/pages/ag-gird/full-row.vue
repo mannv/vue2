@@ -2,25 +2,6 @@
   <div>
     <h1>Demo AG Gird</h1>
 
-    <div
-      class="btn-group mb-3"
-      role="group"
-      aria-label="Basic mixed styles example"
-    >
-      <router-link :to="{ name: 'index' }" class="btn btn-danger">
-        Home
-      </router-link>
-      <router-link :to="{ name: 'ag-gird-full-row' }" class="btn btn-warning">
-        Full Row
-      </router-link>
-      <router-link
-        :to="{ name: 'ag-gird-custom-cell' }"
-        class="btn btn-primary"
-      >
-        Custom Cell
-      </router-link>
-    </div>
-
     <ag-grid-vue
       style="width: 100%; height: 500px"
       class="ag-theme-alpine"

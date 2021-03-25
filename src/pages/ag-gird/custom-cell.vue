@@ -1,25 +1,6 @@
 <template>
   <div>
-    <h1>Demo AG Gird</h1>
-
-    <div
-      class="btn-group mb-3"
-      role="group"
-      aria-label="Basic mixed styles example"
-    >
-      <router-link :to="{ name: 'index' }" class="btn btn-danger">
-        Home
-      </router-link>
-      <router-link :to="{ name: 'ag-gird-full-row' }" class="btn btn-warning">
-        Full Row
-      </router-link>
-      <router-link
-        :to="{ name: 'ag-gird-custom-cell' }"
-        class="btn btn-primary"
-      >
-        Custom Cell
-      </router-link>
-    </div>
+    <h1>Custom Cell</h1>
 
     <ag-grid-vue
       style="width: 100%; height: 500px"
@@ -36,7 +17,10 @@
 </template>
 
 <script>
+import StatusCellRenderer from '@/components/Gird/StatusCellRenderer'
 export default {
+  // eslint-disable-next-line
+  components: { StatusCellRenderer },
   data() {
     return {
       rowData: [],
@@ -57,6 +41,12 @@ export default {
         { headerName: 'ID', field: 'id' },
         { headerName: 'TITLE', field: 'title' },
         { headerName: 'VIEWS', field: 'views' },
+        // { headerName: 'CONTENT', field: 'content' },
+        {
+          headerName: 'STATUS',
+          field: 'id',
+          cellRendererFramework: 'StatusCellRenderer',
+        },
       ]
     },
   },

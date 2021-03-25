@@ -9,6 +9,9 @@
     <button class="btn btn-success" @click="demo">Demo</button>
     <button class="btn btn-danger" @click="logout">Logout</button>
     <button class="btn btn-info" @click="category">Category</button>
+    <router-link :to="{ name: 'ag-gird' }" class="btn btn-danger">
+      AG Gird
+    </router-link>
   </div>
 </template>
 

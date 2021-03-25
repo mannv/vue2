@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "ag-grid-community": "^25.1.0",
+    "ag-grid-enterprise": "^25.1.0",
     "ag-grid-vue": "^25.1.0",
     "axios": "^0.21.1",
     "consola": "^2.15.3",

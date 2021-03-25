@@ -12,8 +12,24 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/ag-gird',
-    name: 'ag-gird-index',
+    name: 'ag-gird',
     component: () => import('@/pages/ag-gird/index'),
+    meta: {
+      layout: 'HomeLayout',
+    },
+  },
+  {
+    path: '/ag-gird/full-row',
+    name: 'ag-gird-full-row',
+    component: () => import('@/pages/ag-gird/full-row'),
+    meta: {
+      layout: 'HomeLayout',
+    },
+  },
+  {
+    path: '/ag-gird/custom-cell',
+    name: 'ag-gird-custom-cell',
+    component: () => import('@/pages/ag-gird/custom-cell'),
     meta: {
       layout: 'HomeLayout',
     },
