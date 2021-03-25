@@ -25,7 +25,9 @@
     >
     </ag-grid-vue>
 
-    <pre>{{ rowData }}</pre>
+    <div style="max-height: 300px; overflow-y: auto; background: #ebffd3">
+      <pre>{{ rowData }}</pre>
+    </div>
   </div>
 </template>
 
@@ -74,7 +76,7 @@ export default {
       }
 
       this.columnDefs = [
-        { headerName: 'ID', field: 'id' },
+        { headerName: 'ID', field: 'id', pinned: 'left', maxWidth: 50 },
         {
           headerName: 'TITLE',
           field: 'title',
@@ -107,40 +109,3 @@ export default {
   },
 }
 </script>
-
-<style>
-.ag-theme-alpine
-  .ag-ltr
-  .ag-has-focus
-  .ag-cell-focus:not(.ag-cell-range-selected),
-.ag-theme-alpine
-  .ag-ltr
-  .ag-context-menu-open
-  .ag-cell-focus:not(.ag-cell-range-selected),
-.ag-theme-alpine
-  .ag-ltr
-  .ag-has-focus
-  .ag-full-width-row.ag-row-focus
-  .ag-cell-wrapper.ag-row-group,
-.ag-theme-alpine .ag-ltr .ag-cell-range-single-cell,
-.ag-theme-alpine .ag-ltr .ag-cell-range-single-cell.ag-cell-range-handle,
-.ag-theme-alpine
-  .ag-rtl
-  .ag-has-focus
-  .ag-cell-focus:not(.ag-cell-range-selected),
-.ag-theme-alpine
-  .ag-rtl
-  .ag-context-menu-open
-  .ag-cell-focus:not(.ag-cell-range-selected),
-.ag-theme-alpine
-  .ag-rtl
-  .ag-has-focus
-  .ag-full-width-row.ag-row-focus
-  .ag-cell-wrapper.ag-row-group,
-.ag-theme-alpine .ag-rtl .ag-cell-range-single-cell,
-.ag-theme-alpine .ag-rtl .ag-cell-range-single-cell.ag-cell-range-handle {
-  border: 1px solid;
-  border-color: transparent;
-  outline: initial;
-}
-</style>

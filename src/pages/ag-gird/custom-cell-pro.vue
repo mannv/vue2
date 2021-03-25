@@ -25,7 +25,9 @@
     >
     </ag-grid-vue>
 
-    <pre>{{ rowData }}</pre>
+    <div style="max-height: 300px; overflow-y: auto; background: #ebffd3">
+      <pre>{{ rowData }}</pre>
+    </div>
   </div>
 </template>
 
@@ -75,7 +77,7 @@ export default {
       }
 
       this.columnDefs = [
-        { headerName: 'ID', field: 'id' },
+        { headerName: 'ID', field: 'id', pinned: 'left', maxWidth: 50 },
         {
           headerName: 'TITLE',
           field: 'title',

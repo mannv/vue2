@@ -31,7 +31,9 @@
     >
     </ag-grid-vue>
 
-    <pre>{{ rowData }}</pre>
+    <div style="max-height: 300px; overflow-y: auto; background: #ebffd3">
+      <pre>{{ rowData }}</pre>
+    </div>
   </div>
 </template>
 
