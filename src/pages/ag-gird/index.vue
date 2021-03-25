@@ -52,9 +52,26 @@
       </div>
     </div>
 
+    <div
+      class="btn-group mb-3"
+      role="group"
+      aria-label="Basic outlined example"
+    >
+      <button
+        v-for="(item, index) in themes"
+        :key="index"
+        type="button"
+        class="btn btn-outline-danger"
+        :class="{ active: defaultTheme === item }"
+        @click="changeTheme(item)"
+      >
+        {{ item }}
+      </button>
+    </div>
+
     <ag-grid-vue
       style="width: 100%; height: 500px"
-      class="ag-theme-alpine"
+      :class="`ag-theme-${defaultTheme}`"
       :column-defs="columnDefs"
       :row-data="rowData"
       :default-col-def="defaultColDef"
@@ -82,6 +99,18 @@
 export default {
   data() {
     return {
+      themes: [
+        'alpine',
+        'alpine-dark',
+        'balham',
+        'balham-dark',
+        'blue',
+        'bootstrap',
+        'dark',
+        'fresh',
+        'material',
+      ],
+      defaultTheme: 'alpine',
       term: '',
       searchTitle: '',
       searchView: '',
@@ -112,6 +141,9 @@ export default {
     this.loadData()
   },
   methods: {
+    changeTheme(name) {
+      this.defaultTheme = name
+    },
     getSelectedRowData() {
       let selectedNodes = this.gridOptions.api.getSelectedNodes()
       let selectedData = selectedNodes.map((node) => node.data.id)

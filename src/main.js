@@ -7,6 +7,14 @@ import { initVuelidate } from '@/config/vuelidate'
 
 import 'ag-grid-community/dist/styles/ag-grid.css'
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css'
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css'
+import 'ag-grid-community/dist/styles/ag-theme-balham.css'
+import 'ag-grid-community/dist/styles/ag-theme-balham-dark.css'
+import 'ag-grid-community/dist/styles/ag-theme-blue.css'
+import 'ag-grid-community/dist/styles/ag-theme-bootstrap.css'
+import 'ag-grid-community/dist/styles/ag-theme-dark.css'
+import 'ag-grid-community/dist/styles/ag-theme-fresh.css'
+import 'ag-grid-community/dist/styles/ag-theme-material.css'
 import { AgGridVue } from 'ag-grid-vue'
 
 Vue.prototype.$log = require('consola')
