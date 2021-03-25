@@ -21,6 +21,14 @@
       </router-link>
     </div>
 
+    <input
+      type="text"
+      class="form-control my-3"
+      v-model="term"
+      placeholder="Quick filter..."
+      @input="onQuickFilterChanged"
+    />
+
     <ag-grid-vue
       style="width: 100%; height: 500px"
       class="ag-theme-alpine"
@@ -43,6 +51,7 @@
 export default {
   data() {
     return {
+      term: '',
       rowData: [],
       columnDefs: null,
       defaultColDef: {
@@ -69,6 +78,9 @@ export default {
     this.loadData()
   },
   methods: {
+    onQuickFilterChanged() {
+      this.gridOptions.api.setQuickFilter(this.term)
+    },
     async loadData() {
       const { data } = await this.axios.get(
         'https://mockend.com/mannv/vue2/posts'
@@ -83,7 +95,14 @@ export default {
       })
 
       this.columnDefs = [
-        { headerName: 'ID', field: 'id', maxWidth: 50 },
+        {
+          headerName: 'ID',
+          field: 'id',
+          maxWidth: 150,
+          headerCheckboxSelection: true,
+          headerCheckboxSelectionFilteredOnly: true,
+          checkboxSelection: true,
+        },
         { headerName: 'TITLE', field: 'title' },
         { headerName: 'VIEWS', field: 'views' },
         {
