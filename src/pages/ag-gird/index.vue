@@ -61,11 +61,13 @@
       :pagination="true"
       :pagination-page-size="10"
       :grid-options="gridOptions"
+      :row-selection="rowSelection"
+      :suppress-row-click-selection="true"
     >
     </ag-grid-vue>
 
     <div class="my-4">
-      <button class="btn btn-primary" @click="totalSelected">
+      <button class="btn btn-primary" @click="getSelectedRowData">
         Get Selected
       </button>
     </div>
@@ -103,15 +105,18 @@ export default {
           empty: 'B Choose One',
         },
       },
+      rowSelection: 'multiple',
     }
   },
   beforeMount() {
     this.loadData()
   },
   methods: {
-    totalSelected() {
-      console.log(this.gridOptions.api)
-      // this.$swal.info({ text: 'demo' })
+    getSelectedRowData() {
+      let selectedNodes = this.gridOptions.api.getSelectedNodes()
+      let selectedData = selectedNodes.map((node) => node.data.id)
+
+      this.$swal.info({ text: _.join(selectedData, ', ') })
     },
     //https://www.ag-grid.com/vue-grid/filter-api/#get--set-all-filter-models
     search() {
