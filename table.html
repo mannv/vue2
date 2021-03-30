@@ -3,12 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <style type="text/css">
         table {
             width: 100%;
-        }
-        .first {
-            width: 250px;
         }
         .ellipsis {
             position: relative;
@@ -25,30 +23,58 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
+        .col2, .col3 {
+            min-width: 180px;
+        }
+        .col4 {
+            width: 150px;
+        }
+        .func {
+            width: 180px;
+        }
+        .text-overflow-two-line {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
     </style>
 </head>
 <body>
+<div style="width: 200px; background: yellowgreen;">
+    <div class="text-overflow-two-line">This Text Overflows and is too large for its cell. あぁかさたなゞゆすくくせせねのをごどぼべでげぎ あぁかさたなゞゆすくくせせねのをごどぼべでげぎ あぁかさたなゞゆすくくせせねのをごどぼべでげぎ</div>
+</div>
 <table border="1">
     <thead>
     <tr>
         <th>Header 1</th>
-        <th>Header 2</th>
-        <th>Header 3</th>
-        <th>Header 4</th>
+        <th class="col2">Header 2</th>
+        <th class="col3">Header 3</th>
+        <th class="col4">Header 4</th>
+        <th class="func">Function</th>
     </tr>
     </thead>
     <tbody>
     <tr>
-        <td class="ellipsis first"><span>This Text Overflows and is too large for its cell.</span></td>
         <td class="ellipsis"><span>This Text Overflows and is too large for its cell.</span></td>
         <td class="ellipsis"><span>This Text Overflows and is too large for its cell.</span></td>
-        <td class="ellipsis"><span>This Text Overflows and is too large for its cell.</span></td>
+        <td class="ellipsis"><span>あぁかさたなゞゆすくくせせねのをごどぼべでげぎ</span></td>
+        <td class="ellipsis"><span>****/**/**</span></td>
+        <td>
+            <button class="btn btn-danger btn-sm">Block</button>
+            <button class="btn btn-primary btn-sm">Change Status</button>
+        </td>
     </tr>
     <tr>
-        <td class="ellipsis first"><span>This Text Overflows and is too large for its cell.</span></td>
+        <td><span class="text-overflow-two-line">あぁかさたなゞゆすくくせせねのをごどぼべでげぎあぁかさたなゞゆすくくせせねのをごどぼべでげぎあぁかさたなゞゆすくくせせねのをごどぼべでげぎあぁかさたなゞゆすくくせせねのをごどぼべでげぎあぁかさたなゞゆすくくせせねのをごどぼべでげぎあぁかさたなゞゆすくくせせねのをごどぼべでげぎあぁかさたなゞゆすくくせせねのをごどぼべでげぎあぁかさたなゞゆすくくせせねのをごどぼべでげぎあぁかさたなゞゆすくくせせねのをごどぼべでげぎあぁかさたなゞゆすくくせせねのをごどぼべでげぎあぁかさたなゞゆすくくせせねのをごどぼべでげぎあぁかさたなゞゆすくくせせねのをごどぼべでげぎあぁかさたなゞゆすくくせせねのをごどぼべでげぎあぁかさたなゞゆすくくせせねのをごどぼべでげぎあぁかさたなゞゆすくくせせねのをごどぼべでげぎあぁかさたなゞゆすくくせせねのをごどぼべでげぎあぁかさたなゞゆすくくせせねのをごどぼべでげぎあぁかさたなゞゆすくくせせねのをごどぼべでげぎあぁかさたなゞゆすくくせせねのをごどぼべでげぎあぁかさたなゞゆすくくせせねのをごどぼべでげぎ</span></td>
         <td class="ellipsis"><span>This Text Overflows and is too large for its cell.</span></td>
-        <td class="ellipsis"><span>This Text Overflows and is too large for its cell.</span></td>
-        <td class="ellipsis"><span>This Text Overflows and is too large for its cell.</span></td>
+        <td><span class="text-overflow-two-line">This Text Overflows and is too large for its cell.</span></td>
+        <td class="ellipsis"><span>****/**/**</span></td>
+        <td>
+            <button class="btn btn-danger btn-sm">Block</button>
+            <button class="btn btn-primary btn-sm">Change Status</button>
+        </td>
     </tr>
     </tbody>
 </table>
