@@ -4,6 +4,7 @@
     <main role="main">
       <div class="container">
         <slot />
+        <div class="om-tien"></div>
       </div>
     </main>
     <Footer />
@@ -19,3 +20,7 @@ export default {
   },
 }
 </script>
+<style lang="scss">
+$primary: yellow;
+@import '~@/assets/themes/custom.scss';
+</style>

@@ -1,0 +1,11 @@
+@import "variables";
+
+body {
+  background-color: $primary !important;
+}
+
+.om-tien {
+  background: url("~@/assets/images/om-tien.png") no-repeat $danger;
+  width: 600px;
+  height: 600px;
+}
