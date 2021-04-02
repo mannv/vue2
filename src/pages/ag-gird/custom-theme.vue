@@ -19,13 +19,6 @@
       >
         Custom Cell
       </router-link>
-
-      <router-link
-        :to="{ name: 'ag-gird-custom-theme' }"
-        class="btn btn-primary"
-      >
-        Custom Theme
-      </router-link>
     </div>
 
     <div class="my-3">
@@ -107,6 +100,7 @@ export default {
   data() {
     return {
       themes: [
+        'gird',
         'alpine',
         'alpine-dark',
         'balham',
@@ -192,51 +186,20 @@ export default {
         {
           headerName: 'ID',
           field: 'id',
-          maxWidth: 150,
-          headerCheckboxSelection: true,
-          headerCheckboxSelectionFilteredOnly: true,
-          checkboxSelection: true,
+          maxWidth: 80,
+          sortable: true,
         },
-        { headerName: 'TITLE', field: 'title' },
-        { headerName: 'VIEWS', field: 'views' },
+        { headerName: 'TITLE', field: 'title', sortable: true },
+        { headerName: 'VIEWS', field: 'views', sortable: true },
         {
           headerName: 'createdAt',
           field: 'createdAt',
-          filter: 'agDateColumnFilter',
-          filterParams: {
-            buttons: ['clear', 'apply'],
-            comparator: function (filterLocalDateAtMidnight, cellValue) {
-              var dateAsString = cellValue
-              if (dateAsString == null) return -1
-              var dateParts = dateAsString.split('/')
-              var cellDate = new Date(
-                Number(dateParts[2]),
-                Number(dateParts[1]) - 1,
-                Number(dateParts[0])
-              )
-              console.log(
-                '%d - %d',
-                filterLocalDateAtMidnight.getTime(),
-                cellDate.getTime()
-              )
-              if (filterLocalDateAtMidnight.getTime() === cellDate.getTime()) {
-                return 0
-              }
-              if (cellDate < filterLocalDateAtMidnight) {
-                return -1
-              }
-              if (cellDate > filterLocalDateAtMidnight) {
-                return 1
-              }
-              return 1
-            },
-            browserDatePicker: true,
-          },
         },
       ]
     },
   },
 }
 </script>
-
-<style scoped></style>
+<style lang="scss">
+$header-background-color: green;
+</style>
