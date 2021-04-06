@@ -51,6 +51,14 @@ const routes = [
     },
   },
   {
+    path: '/ag-gird/pagination',
+    name: 'ag-gird-pagination',
+    component: () => import('@/pages/ag-gird/pagination'),
+    meta: {
+      layout: 'DefaultLayout',
+    },
+  },
+  {
     path: '/',
     name: 'index',
     component: HomeIndex,
