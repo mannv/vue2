@@ -4,6 +4,10 @@ import ProductIndex from '@/pages/product'
 import LoginPage from '@/pages/login'
 import RegisterPage from '@/pages/register'
 import ProfilePageIndex from '@/pages/profile/index'
+import ChartsPage from '@/pages/charts/index'
+import ChartsPage1 from '@/pages/charts/chart1'
+import ChartsPage2 from '@/pages/charts/chart2'
+
 import VueRouter from 'vue-router'
 import Vue from 'vue'
 import auth from '@/middleware/auth'
@@ -57,6 +61,30 @@ const routes = [
     component: ProfilePageIndex,
     meta: {
       layout: 'AdminLTELayout',
+    },
+  },
+  {
+    path: '/charts',
+    name: 'charts',
+    component: ChartsPage,
+    meta: {
+      layout: 'DefaultLayout',
+    },
+  },
+  {
+    path: '/charts/chart1',
+    name: 'charts-chart1',
+    component: ChartsPage1,
+    meta: {
+      layout: 'DefaultLayout',
+    },
+  },
+  {
+    path: '/charts/chart2',
+    name: 'charts-chart2',
+    component: ChartsPage2,
+    meta: {
+      layout: 'DefaultLayout',
     },
   },
 ]
