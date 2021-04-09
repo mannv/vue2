@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+    <script src="d3.v6.min.js"></script>
+    <script src="https://d3js.org/d3-scale.v3.min.js"></script>
+</head>
+<body>
+    <div id="my_chart"></div>
+    <script type="text/javascript">
+
+      var jsonData = [
+        {month: "01/2021", data: {pc: 10, mobile: 20, app: 10}},
+        {month: "02/2021", data: {pc: 25, mobile: 10, app: 64}},
+        {month: "03/2021", data: {pc: 100, mobile: 100, app: 84}},
+        {month: "04/2021", data: {pc: 26, mobile: 59, app: 74}},
+        {month: "05/2021", data: {pc: 54, mobile: 70, app: 59}},
+        {month: "06/2021", data: {pc: 19, mobile: 20, app: 65}},
+      ]
+
+
+
+        var margin = {top: 10, right: 10, bottom: 50, left: 50}
+        var fullWidth = 500
+        var fullHeight = 500
+        var innerWidth = 500 - (margin.left + margin.right)
+        var innerHeight = 500 - (margin.top + margin.bottom)
+
+        var svg = d3.select('#my_chart')
+            .append('svg')
+        .attr('width', fullWidth)
+        .attr('height', fullHeight)
+        .style('background-color', 'gray')
+            .append('g')
+            .attr('transform', `translate(${margin.left},${margin.top})`)
+
+
+        var x = d3.scaleLinear().domain([0,200]).range([0, innerWidth])
+      var y = d3.scaleLinear().range([innerHeight, 0]).domain([1, 100]);
+
+
+    // var x = d3.scaleBand().domain(_.map(jsonData, 'month')).range([0, innerWidth])
+    svg.append('g').attr('transform', `translate(0,${innerHeight})`)
+    .call(d3.axisBottom(x).tickSizeOuter(0))
+
+    svg.append("g").call(d3.axisLeft(y).ticks(8));//.ticks(5)
+
+
+
+      svg.append('g')
+      .selectAll('rect')
+      .data(jsonData)
+      .join('rect')
+      .attr('fill', 'blue')
+      .attr('x', (d, i) => {
+        if (i === 0) {
+          return 50;
+        }
+        return 0
+      })
+      .attr('y', (d, i) => {
+        if (i === 0) {
+          return 50;
+        }
+        return 0
+      })
+      .attr('width', 50)
+      .attr('height', 50)
+
+    </script>
+</body>
+</html>

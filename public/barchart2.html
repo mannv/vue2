@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+    <script src="d3.v6.min.js"></script>
+</head>
+<body>
+    <div id="my_chart"></div>
+    <script type="text/javascript">
+
+      var svg = d3.select("svg")
+
+      var myScale = d3.scale.linear()
+          .domain([0,100])
+          .range([0,400]);
+
+
+      var ticks = [0,50,60,100];
+      var tickLabels = ['a','b','c','d']
+
+      var myAxis = d3.svg.axis()
+          .scale(myScale)
+          .tickValues(ticks)
+          .tickFormat(function(d,i){ return tickLabels[i] });
+
+      svg.append("g")
+          .attr("class", "axis")
+          .call(myAxis)
+          .attr("transform","translate(100,100)");
+
+    </script>
+</body>
+</html>
