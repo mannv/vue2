@@ -4,6 +4,7 @@ import ProductIndex from '@/pages/product'
 import LoginPage from '@/pages/login'
 import RegisterPage from '@/pages/register'
 import ProfilePageIndex from '@/pages/profile/index'
+import BarHorizontal from '@/pages/chart/bar-horizontal'
 import VueRouter from 'vue-router'
 import Vue from 'vue'
 import auth from '@/middleware/auth'
@@ -57,6 +58,14 @@ const routes = [
     component: ProfilePageIndex,
     meta: {
       layout: 'AdminLTELayout',
+    },
+  },
+  {
+    path: '/bar-horizontal',
+    name: 'bar-horizontal',
+    component: BarHorizontal,
+    meta: {
+      layout: 'DefaultLayout',
     },
   },
 ]

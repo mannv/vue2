@@ -9,11 +9,15 @@
     <button class="btn btn-success" @click="demo">Demo</button>
     <button class="btn btn-danger" @click="logout">Logout</button>
     <button class="btn btn-info" @click="category">Category</button>
+    <router-link :to="{ name: 'bar-horizontal' }" @click="category">
+      Bar Horizontal
+    </router-link>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+
 export default {
   computed: {
     ...mapGetters('auth', ['name']),
