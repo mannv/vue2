@@ -25,16 +25,16 @@ export default {
     },
     height: {
       type: Number,
-      default: 600,
+      default: 400,
     },
     paddingChart: {
       type: Number,
-      default: 20,
+      default: 10,
     },
     margin: {
       type: Object,
       default: () => {
-        return { left: 80, top: 10, right: 10, bottom: 50 }
+        return { left: 130, top: 10, right: 10, bottom: 50 }
       },
     },
     colors: {
@@ -43,6 +43,10 @@ export default {
         return ['#1a76d2', '#d2302e', '#aed581']
       },
     },
+    tickColor: {
+      type: String,
+      default: 'gray',
+    },
   },
   computed: {
     chartId() {
@@ -50,7 +54,7 @@ export default {
     },
     chartData() {
       let data = []
-      const totalMonth = 3
+      const totalMonth = 10
       for (let i = 1; i <= totalMonth; i++) {
         let monthData = { name: `2021/${_.toString(i).padStart(2, '0')}` }
         let links = []
@@ -58,7 +62,7 @@ export default {
         // const totalLink = _.random(1, 10)
         let totalLink = 2
         if (i === 2) {
-          totalLink = 3
+          totalLink = 10
         }
         for (let i2 = 0; i2 < totalLink; i2++) {
           links.push({
@@ -156,13 +160,24 @@ export default {
 
   methods: {
     addChartLeftLabel(g, chartData, chartHeight) {
+      const labels = _.split(chartData.name, '/')
+
       g.append('text')
         .attr('class', 'y axis-label')
-        .attr('x', -40)
-        .attr('y', chartHeight / 2)
+        .attr('x', -this.margin.left + 10)
+        .attr('y', chartHeight / 2 - 10)
         .attr('font-size', '1rem')
-        .attr('text-anchor', 'middle')
-        .text(chartData.name)
+        .attr('text-anchor', 'start')
+        .attr('font-weight', 'bold')
+        .text(labels[0])
+      g.append('text')
+        .attr('class', 'y axis-label')
+        .attr('x', -this.margin.left + 10)
+        .attr('y', chartHeight / 2 + 10)
+        .attr('font-size', '1rem')
+        .attr('text-anchor', 'start')
+        .attr('font-weight', 'bold')
+        .text(`/${labels[1]}`)
     },
 
     renderChartInfo(g, chartData, chartHeight, showTickLabel = false) {
@@ -195,8 +210,67 @@ export default {
           .attr('y', 10)
           .attr('x', 0)
           .attr('text-anchor', 'middle')
-          .attr('color', 'gray')
+          .attr('color', this.tickColor)
       }
+
+      //render y axis
+      const yLabels = _.map(chartData.links, 'url')
+      console.log('yLabels', yLabels)
+      const y = d3
+        .scaleBand()
+        .domain(yLabels)
+        .range([0, chartHeight])
+        .paddingInner(0.1)
+        .paddingOuter(0.1)
+      const yAxisCall = d3.axisLeft(y).tickSizeInner(0).tickSizeOuter(0)
+      const yAxis = g.append('g').attr('class', 'left-axis').call(yAxisCall)
+
+      yAxis.selectAll('path').remove()
+      yAxis.selectAll('text').attr('fill', this.tickColor)
+
+      //render sub col data
+
+      // const testRect = g.selectAll('.part2').data(yLabels)
+      // testRect
+      //   .enter()
+      //   .append('rect')
+      //   .attr('x', 0)
+      //   .attr('y', (d, i) => y(yLabels[i]))
+      //   .attr('width', 100)
+      //   .attr('height', y.bandwidth())
+      //   .attr('fill', 'red')
+
+      const subCol = _.keys(_.head(chartData.links).data)
+      const colors = d3.scaleOrdinal().domain(subCol).range(this.colors)
+      const colScale = d3.scaleBand().domain(subCol).range([0, y.bandwidth()])
+
+      const subGroup = g.selectAll('.part').data(chartData.links)
+      subGroup
+        .enter()
+        .append('g')
+        .attr('class', 'g-sub')
+        .attr('transform', (d, i) => {
+          return `translate(0, ${y(yLabels[i])})`
+        })
+        .selectAll('rect')
+        .data((d) => {
+          return _.values(d.data)
+        })
+        .join('rect')
+        .attr('x', 0)
+        .attr('y', (d, i) => colScale(subCol[i]))
+        .attr('width', (d) => {
+          console.log('d-v', d)
+          return x(d)
+        })
+        // .attr('y', HEIGHT)
+        .attr('height', colScale.bandwidth())
+        .attr('fill', (d, i) => {
+          return colors(subCol[i])
+        })
+      // .transition(t)
+      // .attr('y', (d) => y(d))
+      // .attr('height', (d) => HEIGHT - y(d))
     },
 
     getYBandWidth(innerHeight) {
@@ -217,10 +291,12 @@ export default {
 
       // this.g.append('g').attr('class', 'left-axis').call(yAxisCall)
 
-      console.log('bandWidth', y.bandwidth(), y.paddingInner())
+      let bandwidth = 30 //y.bandwidth()
+
+      console.log('bandWidth', bandwidth, y.paddingInner())
       this.yBandWidth = {
-        bandwidth: y.bandwidth(),
-        padding: y.paddingInner() * y.bandwidth(),
+        bandwidth: bandwidth,
+        padding: y.paddingInner() * bandwidth,
       }
 
       // const rects = this.g.selectAll('rect').data(fakeYaxisLabel)
