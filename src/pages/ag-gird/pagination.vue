@@ -1,7 +1,9 @@
 <template>
   <div>
     <h1>Demo AG Gird</h1>
-
+    <ul>
+      <li v-for="(item, index) in rowData" :key="index">{{ item.title }}</li>
+    </ul>
     <div
       class="btn-group mb-3 d-none"
       role="group"
@@ -51,10 +53,10 @@
 </template>
 
 <script>
+/* eslint-disable */
 import CustomCellId from '@/components/Gird/CustomCellId'
 import StatusCellRenderer from '@/components/Gird/StatusCellRenderer'
 export default {
-  // eslint-disable-next-line
   components: { CustomCellId, StatusCellRenderer },
   data() {
     return {
@@ -123,11 +125,48 @@ export default {
   },
   methods: {
     clickCellId(id) {
+      const findIndex = _.findIndex(this.rowData, (item) => {
+        return item.id === id
+      })
+
+      let data = [...this.rowData]
+      data[findIndex].title = 'title changed'
+      data[findIndex].body = 'body changed'
+      this.rowData = data
+
+      // this.rowData[0].title = 'demo change data'
+      // this.rowData[0].body = 'demo change data'
+
+      // let obj = { ...this.rowData[0] }
+      // obj.title = 'title changed'
+      // obj.body = 'body changed'
+      // this.rowData[0] = obj
+      //
+      // console.log('obj', obj)
+
+      // this.rowData = [
+      //   {
+      //     id: '1',
+      //     body: 'change body 1',
+      //     title: 'demo change data',
+      //     status_cd: 'status_cd 1',
+      //     label_cd: 'label_cd 1',
+      //     send_date: 1617855970,
+      //   },
+      // ]
+
       console.log('clickCellId: %d', id)
       this.$swal.success({ text: `Click cell ID: ${id}` })
     },
     changeStatus(id) {
-      console.log('changeStatus: %d', id)
+      const findIndex = _.findIndex(this.rowData, (item) => {
+        return item.id === id
+      })
+
+      let data = [...this.rowData]
+      data[findIndex].label_cd = 'change status'
+      this.rowData = data
+
       this.$swal.success({ text: `Change status ID: ${id}` })
     },
     sortChanged(e) {
@@ -151,6 +190,17 @@ export default {
     },
 
     async loadData(page) {
+      // this.rowData = [
+      //   {
+      //     id: '1',
+      //     body: 'body 1',
+      //     title: 'title 1',
+      //     status_cd: 'status_cd 1',
+      //     label_cd: 'label_cd 1',
+      //     send_date: 1617855970,
+      //   },
+      // ]
+
       this.loading = true
       let params = { page: page, limit: this.perPage }
 
@@ -163,6 +213,7 @@ export default {
         method: 'get',
         params,
       })
+      console.log('data', data)
       this.rowData = data
       this.loading = false
     },
