@@ -20,6 +20,9 @@ initVuelidate()
 import PortalVue from 'portal-vue'
 Vue.use(PortalVue)
 
+import CKEditor from 'ckeditor4-vue'
+Vue.use(CKEditor)
+
 new Vue({
   router: ConfigRouter,
   store: ConfigStore,
