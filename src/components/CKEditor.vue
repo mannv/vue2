@@ -33,18 +33,18 @@ export default {
       </tr>
     </table>`,
       editorConfig: {
-        format_tags: 'p;h1;h2;h3;h4;h5;h6',
-        toolbar: [
-          { name: 'document', items: ['Source'] },
-          { name: 'styles', items: ['Format', 'Font', 'FontSize'] },
-          { name: 'colors', items: ['TextColor', 'BGColor'] },
-        ],
-        // language: 'ja',
-        height: 400,
-        // allowedContent: 'h1{*}; h2{*}; h3{*}; h4{*}; h5{*}; h6{*}; span{*}',
-        allowedContent:
-          'h1{*}; h2{*}; h3{*}; h4{*}; h5{*}; h6{*}; p{*}; span{*}; br;',
-        // disallowedContent: 'span',
+        // format_tags: 'p;h1;h2;h3;h4;h5;h6',
+        // toolbar: [
+        //   { name: 'document', items: ['Source'] },
+        //   { name: 'styles', items: ['Format', 'Font', 'FontSize'] },
+        //   { name: 'colors', items: ['TextColor', 'BGColor'] },
+        // ],
+        // // language: 'ja',
+        // height: 400,
+        // // allowedContent: 'h1{*}; h2{*}; h3{*}; h4{*}; h5{*}; h6{*}; span{*}',
+        // allowedContent:
+        //   'h1{*}; h2{*}; h3{*}; h4{*}; h5{*}; h6{*}; p{*}; span{*}; br;',
+        // // disallowedContent: 'span',
       },
     }
   },

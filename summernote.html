@@ -16,9 +16,60 @@
     <p>Huluは人気映画やドラマ50,000本が見放題のオンライン動画配信サービスです。外出先でお手持ちのスマホや自宅のテレビでも、全ての作品やチャンネルが月額1,026円(税込)で見放題。リアルタイム配信で、BBCワールドニュースが視聴できます。</p>
 </div>
 <script>
+
+  var HelloButton = function (context) {
+    var ui = $.summernote.ui;
+
+    // create button
+    // var button = ui.button({
+    //   contents: '<i class="fa fa-child"/> Hello',
+    //   tooltip: 'hello',
+    //   click: function () {
+    //     // invoke insertText method with 'hello' on editor module.
+    //     context.invoke('editor.insertText', 'hello');
+    //   }
+    // });
+
+    const dropDownItems = ['[contract_end_date]', '[corporate_name]', '[person_in_charge]']
+
+    var button = ui.dropdown({
+      className: 'dropdown-style',
+      items: dropDownItems,
+      title: 'Params',
+      tooltip: 'hello',
+      contents: '<i class="fa fa-child"/> Hello',
+      template: function template(item) {
+        // TBD: need to be simplified
+        // if (typeof item === 'string') {
+        //   item = {
+        //     tag: item,
+        //     title: Object.prototype.hasOwnProperty.call(_this2.lang.style, item) ? _this2.lang.style[item] : item
+        //   };
+        // }
+        console.log('item', item)
+        // var tag = item.tag;
+        // var title = item.title;
+        // var style = item.style ? ' style="' + item.style + '" ' : '';
+        // var className = item.className ? ' class="' + item.className + '"' : '';
+        return '<a>' + item + '</a>';
+      },
+      click: function () {
+        // invoke insertText method with 'hello' on editor module.
+        // context.invoke('editor.insertText', 'hello');
+        console.log('demo aaaaaa')
+      }
+    });
+
+    return button.render();   // return button as jquery object
+  }
+
   $(document).ready(function() {
     $('#summernote').summernote({
+      buttons: {
+        hello: HelloButton
+      },
       toolbar: [
+        ['mybutton', ['hello']],
         ['style', ['style']],
         ['font', ['bold', 'underline', 'italic', 'clear']],
         ['fontname', ['fontname']],
