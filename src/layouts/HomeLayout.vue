@@ -1,10 +1,9 @@
 <template>
   <div>
-    <Header bg-class="bg-success" />
+    <Header />
     <main role="main">
       <div class="container">
         <slot />
-        <div class="om-tien"></div>
       </div>
     </main>
     <Footer />
@@ -24,6 +23,6 @@ export default {
 </script>
 
 <style lang="scss">
-$primary: green;
+$primary: none;
 @import '~@/assets/themes/custom.scss';
 </style>

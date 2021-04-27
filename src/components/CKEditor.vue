@@ -5,6 +5,7 @@
       :config="editorConfig"
       :disabled="disabled"
       editor-url="https://cdn.ckeditor.com/4.14.0/full-all/ckeditor.js"
+      @namespaceloaded="namespaceloaded"
     ></ckeditor>
     <pre>{{ editorData }}</pre>
   </div>
@@ -34,21 +35,32 @@ export default {
     </table>`,
       editorConfig: {
         // format_tags: 'p;h1;h2;h3;h4;h5;h6',
-        // toolbar: [
-        //   { name: 'document', items: ['Source'] },
-        //   { name: 'styles', items: ['Format', 'Font', 'FontSize'] },
-        //   { name: 'colors', items: ['TextColor', 'BGColor'] },
-        // ],
+        toolbar: [
+          { name: 'document', items: ['Source'] },
+          { name: 'styles', items: ['Format', 'Font', 'FontSize'] },
+          { name: 'colors', items: ['TextColor', 'BGColor'] },
+          { name: 'parameter', items: ['parameter'] },
+        ],
         // // language: 'ja',
         // height: 400,
         // // allowedContent: 'h1{*}; h2{*}; h3{*}; h4{*}; h5{*}; h6{*}; span{*}',
-        // allowedContent:
-        //   'h1{*}; h2{*}; h3{*}; h4{*}; h5{*}; h6{*}; p{*}; span{*}; br;',
+        allowedContent:
+          'h1{*}; h2{*}; h3{*}; h4{*}; h5{*}; h6{*}; p{*}; span{*}; br;',
         // // disallowedContent: 'span',
+        extraPlugins: 'parameter',
       },
     }
+  },
+  methods: {
+    namespaceloaded(CKEDITOR) {
+      CKEDITOR.plugins.addExternal('parameter', '/js/plugin/parameter.js')
+    },
   },
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+::v-deep .cke_combo_text {
+  width: 95px !important;
+}
+</style>
