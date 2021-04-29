@@ -4,6 +4,7 @@ import ProductIndex from '@/pages/product'
 import LoginPage from '@/pages/login'
 import RegisterPage from '@/pages/register'
 import ProfilePageIndex from '@/pages/profile/index'
+import SheetPageIndex from '@/pages/sheet/index'
 import VueRouter from 'vue-router'
 import Vue from 'vue'
 import auth from '@/middleware/auth'
@@ -14,6 +15,14 @@ const routes = [
     path: '/',
     name: 'index',
     component: HomeIndex,
+    meta: {
+      layout: 'HomeLayout',
+    },
+  },
+  {
+    path: '/sheet',
+    name: 'sheet',
+    component: SheetPageIndex,
     meta: {
       layout: 'HomeLayout',
     },
