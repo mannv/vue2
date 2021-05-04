@@ -1,9 +1,9 @@
 <template>
   <div>
     <h1>Demo AG Gird</h1>
-    <!--    <ul>-->
-    <!--      <li v-for="(item, index) in rowData" :key="index">{{ item.title }}</li>-->
-    <!--    </ul>-->
+    <ul>
+      <li v-for="(item, index) in rowData" :key="index">{{ item.title }}</li>
+    </ul>
     <div
       class="btn-group mb-3 d-none"
       role="group"
@@ -31,8 +31,6 @@
         :default-col-def="defaultColDef"
         :grid-options="gridOptions"
         :suppress-row-click-selection="true"
-        :paginationPageSize="10"
-        :pagination="true"
       >
       </ag-grid-vue>
       <div
@@ -177,14 +175,9 @@ export default {
       this.loadData(this.currentPage)
     },
 
-    ChangePage(page) {
-      console.log(page)
-      this.gridOptions.api.paginationGoToPage(page - 1)
+    async ChangePage(page) {
+      await this.loadData(page)
     },
-
-    // async ChangePage(page) {
-    //   await this.loadData(page)
-    // },
     // dataRendered(e) {
     //   console.log('gridReady', e)
     //   console.log('paginationGetCurrentPage', e.api.paginationGetCurrentPage())
@@ -209,7 +202,7 @@ export default {
       // ]
 
       this.loading = true
-      let params = { page: page, limit: 1000 }
+      let params = { page: page, limit: this.perPage }
 
       if (typeof this.sort === 'object') {
         params.sortBy = this.sort.colId
@@ -229,7 +222,4 @@ export default {
 </script>
 <style lang="scss">
 $header-background-color: green;
-.ag-paging-panel {
-  display: block !important;
-}
 </style>
