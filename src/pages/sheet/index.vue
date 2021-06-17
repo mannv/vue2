@@ -75,13 +75,12 @@ export default {
         fill: {
           type: 'pattern',
           pattern: 'darkTrellis',
-          fgColor: { argb: 'FFFFFF00' },
-          bgColor: { argb: 'FF0000FF' },
+          fgColor: { argb: 'DD4D39' },
         },
         font: {
           bold: true,
-          name: 'Comic Sans MS',
-          color: { argb: 'FF00FFFF' },
+          name: 'Calibri',
+          color: { argb: 'FFFFFF' },
         },
       }
 
