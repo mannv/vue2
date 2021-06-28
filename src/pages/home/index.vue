@@ -6,11 +6,11 @@
     <pre>
       isLogin: {{ isLogin }}
     </pre>
-    <button class="btn btn-success" @click="demo">Demo</button>
-    <button class="btn btn-danger" @click="logout">Logout</button>
-    <button class="btn btn-info" @click="category">Category</button>
+    <button class="btn btn-success" @click="demo">Demo1</button>
+    <button class="btn btn-danger" @click="logout">Logout1</button>
+    <button class="btn btn-info" @click="category">Category1</button>
     <hr />
-    <button class="btn btn-info" @click="exportExcel">Export excel</button>
+    <button class="btn btn-info" @click="exportExcel">Export excel2</button>
     <hr />
     <CKEditor />
   </div>

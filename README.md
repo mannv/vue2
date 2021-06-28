@@ -1,24 +1,23 @@
-# v2
+# Deploy with docker (nginx)
 
-## Project setup
-```
-npm install
-```
+References: https://cli.vuejs.org/guide/deployment.html#docker-nginx
 
-### Compiles and hot-reloads for development
+1. Build your docker image
 ```
-npm run serve
+docker build . -t vue-app
 ```
 
-### Compiles and minifies for production
+2. Remove docker container if exists
 ```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
+docker rm -f cross_lang
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+3. Run your docker image
+```
+docker run --name=cross_lang -d -p 80:80 vue-app
+```
+
+**Or simply execute a single command**
+```
+sh build.sh
+```

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button class="btn btn-info" @click="exportExcel">Export excel</button>
+    <button class="btn btn-info" @click="exportExcel">Export excel 1-2</button>
     <div>{{ columnLetters }}</div>
     <pre>{{ rows[0] }}</pre>
   </div>
